@@ -1,0 +1,79 @@
+ HumMod / Gut
+
+Created : 27-Oct-10
+Last Modified : 28-feb-11
+Author : W Pruett
+Copyright : 2010-2010//
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+   
+<structure><name> Ilium </name>
+
+<variables>
+
+<!-- active factors -->
+
+  <var><name> Out </name><val> 0 </val></var>
+  <parm><name> c </name><val> .0029  </val></parm>
+  <parm><name> Washout </name><val> .045  </val></parm>
+
+
+<!-- Total effect -->
+  <var><name> Absorption </name></var>
+  <var><name> FracMass </name></var>
+  <var><name> Abs </name></var>
+
+</variables>
+
+<equations>
+
+
+ <diffeq>
+  <name> Mass </name>  
+     <integralname> Mass </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+</equations>
+
+
+<definitions>
+
+ <block>
+ <name> Parms </name>
+
+
+ </block>
+
+ <block>
+ <name>Dervs </name>
+
+   <def><name> Absorption </name><val> Mass * c </val></def>
+
+ <if>
+  <test> Mass GT .0001 </test>
+  <true>
+   <def>
+	<name> Out </name>
+	<val> Washout * Mass </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out </name><val> 0 </val></def>
+  </false>
+ </if>
+   <def><name> Change </name><val> Jejunum.Out - Absorption - Out </val></def>
+
+
+
+
+ </block>
+
+
+</definitions>  
+
+</structure>                                                                                                                                                  
+   
+                                                                               

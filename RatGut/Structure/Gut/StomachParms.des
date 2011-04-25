@@ -1,0 +1,23 @@
+ HumMod / Gut
+
+Created : 27-Oct-10
+Last Modified : 28-feb-11
+Author : W Pruett
+Copyright : 2010-2010//
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+   
+<structure><name> StomachParms </name>
+
+ <variables>
+
+ <!-- Absorption parameters -->
+
+  <parm><name> WashOut </name><val> .0225 </val></parm> 95% washout in 150 minutes
+  <parm><name> MealTime </name><val>12</val></parm>
+
+ </variables>
+
+</structure>                                                                                                                                                  
+   
+                                                                               

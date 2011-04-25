@@ -1,0 +1,75 @@
+ HumMod / Bolus
+
+Created : 1-Nov-10
+Last Modified : 1-Nov-10
+Author : W Pruett
+Copyright : 2010-2010
+By : University of Mississippi Medical Center
+Solver : DES 2005
+Schema : 
+
+<panel><name> RatBolus </name>
+
+<structurename> RatBolus </structurename>
+
+<showpanelname>
+  <row> 0.5 </row><col> 1.0 </col>
+</showpanelname>
+
+
+<groupbox>
+   <row> 1.0 </row>
+   <col> 1.0 </col>
+   <high> 7.5 </high>
+   <wide> 37.0 </wide>
+   <title> Ca Supplement </title>
+
+
+<repeatlist>
+  <name> CaDose </name>
+  <repeat>
+    <reps> 25 </reps>
+    <stepsize> 50 </stepsize>
+  </repeat>
+</repeatlist>
+
+<slidebar>
+  <row> 1.0 </row><col> 1 </col>
+  <name> CaSupplement.Dose </name>
+  <listname> CaDose </listname>
+  <label> CaDose </label>
+</slidebar>
+
+ <infobutton>
+  <row> 1.0 </row><col> 30 </col>
+  <line>  </line>
+  <line>  mg </line>
+ </infobutton>
+
+<repeatlist>
+  <name> CaSupplement.TimesDay </name>
+  <repeat>
+    <reps> 20 </reps>
+    <stepsize> 1 </stepsize>
+  </repeat>
+</repeatlist>
+
+<slidebar>
+  <row> 3.0 </row><col> 1 </col>
+  <name> CaSupplement.TimesDay </name>
+  <listname> TimesDay </listname>
+  <label> Times / Day </label>
+</slidebar>
+
+
+</groupbox>
+
+
+</panel>
+
+
+
+End
+                                     
+ 
+                      

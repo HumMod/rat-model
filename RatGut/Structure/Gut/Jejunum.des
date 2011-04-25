@@ -1,0 +1,364 @@
+ HumMod / Gut
+
+Created : 27-Oct-10
+Last Modified : 28-feb-11
+Author : W Pruett
+Copyright : 2010-2010//
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+   
+<structure><name> Jejunum </name>
+
+<variables>
+
+<!-- active factors -->
+  <var><name> AbsFrac </name></var>
+
+  <parm><name> A </name><val> .0058 </val></parm>
+  <parm><name> S </name><val> .45 </val></parm>
+  <parm><name> n </name><val> .94 </val></parm>
+  <parm><name> c </name><val> .0029  </val></parm>
+  <parm><name> Sensitivity</name><val> .00001 </val></parm>
+
+  <var><name> Active1 </name></var>
+  <var><name> Active2 </name></var>
+  <var><name> Active3 </name></var>
+  <var><name> Active4 </name></var>
+  <var><name> Active5 </name></var>
+  <var><name> Active6 </name></var>
+  <var><name> Active7 </name></var>
+  <var><name> Active8 </name></var>
+  <var><name> Active9 </name></var>
+
+  <var><name> Out1 </name><val> 0 </val></var>
+  <var><name> Out2 </name><val> 0 </val></var>
+  <var><name> Out3 </name><val> 0 </val></var>
+  <var><name> Out4 </name><val> 0 </val></var>
+  <var><name> Out5 </name><val> 0 </val></var>
+  <var><name> Out6 </name><val> 0 </val></var>
+  <var><name> Out7 </name><val> 0 </val></var>
+  <var><name> Out8 </name><val> 0 </val></var>
+
+  <var><name> Absorption1 </name></var>
+  <var><name> Absorption2 </name></var>
+  <var><name> Absorption3 </name></var>
+  <var><name> Absorption4 </name></var>
+  <var><name> Absorption5 </name></var>
+  <var><name> Absorption6 </name></var>
+  <var><name> Absorption7 </name></var>
+  <var><name> Absorption8 </name></var>
+  <var><name> Absorption9 </name></var>
+  <var><name> Absorption </name></var>
+
+  <var><name> FracMass </name></var>
+  <var><name> Abs </name></var>
+  <parm><name> Washout </name><val>.108</val></parm>
+  <var><name> Out </name><val> 0 </val></var>
+
+</variables>
+
+<equations>
+
+ <diffeq>
+  <name> Mass1 </name>  
+     <integralname> Mass1 </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change1 </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+
+ <diffeq> 
+ <name> Mass2 </name>  
+     <integralname> Mass2 </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change2 </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+ <diffeq> 
+  <name> Mass3 </name>  
+     <integralname> Mass3 </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change3 </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+ <diffeq> 
+  <name> Mass4 </name>  
+     <integralname> Mass4 </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change4 </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+ <diffeq> 
+  <name> Mass5 </name>  
+     <integralname> Mass5 </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change5 </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+ <diffeq> 
+  <name> Mass6 </name>  
+     <integralname> Mass6 </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change6 </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+ <diffeq> 
+  <name> Mass7 </name>  
+     <integralname> Mass7 </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change7 </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+ <diffeq> 
+  <name> Mass8 </name>  
+     <integralname> Mass8 </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change8 </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+ <diffeq> 
+  <name> Mass9 </name>  
+     <integralname> Mass9 </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Change9 </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+</equations>
+
+
+<definitions>
+
+ <block>
+ <name> Parms </name>
+
+ </block>
+
+ <block>
+ <name>Dervs </name>
+
+
+
+ <def><name> Active1 </name><val> A * ( S ^ n ) / ( ( Mass1 ^ n ) + ( S ^ n ) ) </val></def>
+ <def><name> Active2 </name><val> A * ( S ^ n ) / ( ( Mass2 ^ n ) + ( S ^ n ) ) </val></def>
+ <def><name> Active3 </name><val> A * ( S ^ n ) / ( ( Mass3 ^ n ) + ( S ^ n ) ) </val></def>
+ <def><name> Active4 </name><val> A * ( S ^ n ) / ( ( Mass4 ^ n ) + ( S ^ n ) ) </val></def>
+ <def><name> Active5 </name><val> A * ( S ^ n ) / ( ( Mass5 ^ n ) + ( S ^ n ) ) </val></def>
+ <def><name> Active6 </name><val> A * ( S ^ n ) / ( ( Mass6 ^ n ) + ( S ^ n ) ) </val></def>
+ <def><name> Active7 </name><val> A * ( S ^ n ) / ( ( Mass7 ^ n ) + ( S ^ n ) ) </val></def>
+ <def><name> Active8 </name><val> A * ( S ^ n ) / ( ( Mass8 ^ n ) + ( S ^ n ) ) </val></def>
+ <def><name> Active9 </name><val> A * ( S ^ n ) / ( ( Mass9 ^ n ) + ( S ^ n ) ) </val></def>
+
+
+ <def><name> Absorption1 </name><val> Mass1 * ( c + Active1 ) </val></def>
+ <def><name> Absorption2 </name><val> Mass2 * ( c + Active2 ) </val></def>
+ <def><name> Absorption3 </name><val> Mass3 * ( c + Active3 ) </val></def>
+ <def><name> Absorption4 </name><val> Mass4 * ( c + Active4 ) </val></def>
+ <def><name> Absorption5 </name><val> Mass5 * ( c + Active5 ) </val></def>
+ <def><name> Absorption6 </name><val> Mass6 * ( c + Active6 ) </val></def>
+ <def><name> Absorption7 </name><val> Mass7 * ( c + Active7 ) </val></def>
+ <def><name> Absorption8 </name><val> Mass8 * ( c + Active8 ) </val></def>
+ <def><name> Absorption9 </name><val> Mass9 * ( c + Active9 ) </val></def>
+
+<if>
+  <test> Absorption1 LE Sensitivity </test>
+   <true>
+    <def><name> Absorption1</name><val> 0</val></def>
+   </true></if>
+
+<if>
+  <test> Absorption2 LE Sensitivity</test>
+   <true>
+    <def><name> Absorption2</name><val> 0</val></def>
+   </true></if>
+<if>
+  <test> Absorption3 LE Sensitivity</test>
+   <true>
+    <def><name> Absorption3</name><val> 0</val></def>
+   </true></if>
+<if>
+  <test> Absorption4 LE Sensitivity</test>
+   <true>
+    <def><name> Absorption4</name><val> 0</val></def>
+   </true></if>
+<if>
+  <test> Absorption5 LE Sensitivity</test>
+   <true>
+    <def><name> Absorption5</name><val> 0</val></def>
+   </true></if>
+<if>
+  <test> Absorption6 LE Sensitivity</test>
+   <true>
+    <def><name> Absorption6</name><val> 0</val></def>
+   </true></if>
+<if>
+  <test> Absorption7 LE Sensitivity</test>
+   <true>
+    <def><name> Absorption7</name><val> 0</val></def>
+   </true></if>
+<if>
+  <test> Absorption8 LE Sensitivity</test>
+   <true>
+    <def><name> Absorption8</name><val> 0</val></def>
+   </true></if>
+<if>
+  <test> Absorption9 LE Sensitivity </test>
+   <true>
+    <def><name> Absorption9</name><val> 0</val></def>
+   </true></if>
+
+
+ <def><name> Absorption </name><val> Absorption1 + Absorption2 + Absorption3 + Absorption4 + Absorption5 + Absorption6 + Absorption7 + Absorption8 + Absorption9 </val></def>
+
+ <if>
+  <test> Mass1 GT Sensitivity </test>
+  <true>
+   <def>
+	<name> Out1 </name>
+	<val> Washout * Mass1 </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out1 </name><val> 0 </val></def>
+  </false>
+ </if>
+
+
+
+ <if>
+  <test> Mass2 GT Sensitivity</test>
+  <true>
+   <def>
+	<name> Out2 </name>
+	<val> Washout * Mass2 </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out2 </name><val> 0 </val></def>
+  </false>
+ </if>
+
+
+ <if>
+  <test> Mass3 GT Sensitivity</test>
+  <true>
+   <def>
+	<name> Out3 </name>
+	<val> Washout * Mass3 </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out3 </name><val> 0 </val></def>
+  </false>
+ </if>
+
+ <if>
+  <test> Mass4 GT Sensitivity</test>
+  <true>
+   <def>
+	<name> Out4 </name>
+	<val> Washout * Mass4 </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out4 </name><val> 0 </val></def>
+  </false>
+ </if>
+
+ <if>
+  <test> Mass5 GT Sensitivity</test>
+  <true>
+   <def>
+	<name> Out5 </name>
+	<val> Washout * Mass5 </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out5 </name><val> 0 </val></def>
+  </false>
+ </if>
+
+
+ <if>
+  <test> Mass6 GT Sensitivity</test>
+  <true>
+   <def>
+	<name> Out6 </name>
+	<val> Washout * Mass6 </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out6 </name><val> 0 </val></def>
+  </false>
+ </if>
+
+
+
+ <if>
+  <test> Mass7 GT Sensitivity</test>
+  <true>
+   <def>
+	<name> Out7 </name>
+	<val> Washout * Mass7 </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out7 </name><val> 0 </val></def>
+  </false>
+ </if>
+
+ <if>
+  <test> Mass8 GT Sensitivity</test>
+  <true>
+   <def>
+	<name> Out8 </name>
+	<val> Washout * Mass8 </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out8 </name><val> 0 </val></def>
+  </false>
+ </if>
+
+ <if>
+  <test> Mass9 GT Sensitivity</test>
+  <true>
+   <def>
+	<name> Out </name>
+	<val> Washout * Mass9 </val>
+   </def>
+  </true>
+  <false>
+   <def><name> Out </name><val> 0 </val></def>
+  </false>
+ </if>
+
+
+ <def><name> Change1 </name><val> Duodenum.Out - Absorption1 - Out1 </val></def>
+ <def><name> Change2 </name><val> Out1 - Absorption2 - Out2 </val></def>
+ <def><name> Change3 </name><val> Out2 - Absorption3 - Out3 </val></def>
+ <def><name> Change4 </name><val> Out3 - Absorption4 - Out4 </val></def>
+ <def><name> Change5 </name><val> Out4 - Absorption5 - Out5 </val></def>
+ <def><name> Change6 </name><val> Out5 - Absorption6 - Out6 </val></def>
+ <def><name> Change7 </name><val> Out6 - Absorption7 - Out7 </val></def>
+ <def><name> Change8 </name><val> Out7 - Absorption8 - Out8 </val></def>
+ <def><name> Change9 </name><val> Out8 - Absorption9 - Out </val></def>
+
+
+ </block>
+
+
+</definitions>  
+
+</structure>                                                                                                                                  
+601-898-4867                
+   
+                                                                               

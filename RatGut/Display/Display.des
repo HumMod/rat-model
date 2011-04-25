@@ -1,0 +1,33 @@
+HumMod / Display
+
+Created : 04-Jan-11
+Last Modified : 04-Jan-11
+Author : Pruett
+Copyright : 2011
+By : University of Mississippi Medical Center
+Schema : DES V1.0
+
+<?path RatGut\Display ?>
+
+<display>
+
+<common>
+
+<addarrowsnewline/>
+
+<?include Tree\Tree.DES ?>
+<?include Common.DES ?>
+
+</common>
+
+<?include Physiology\Physiology.DES ?>
+<?include Clinic\Dashboard\NewDashboard.DES ?>
+
+
+<common>
+  <displayfirst> Loop Dashboard </displayfirst>
+</common>
+
+</display>
+
+End                 

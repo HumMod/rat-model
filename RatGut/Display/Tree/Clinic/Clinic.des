@@ -1,0 +1,37 @@
+  HumMod / Clinic.DES
+
+Created : 
+Last Modified : 2011-01-04
+Author : Pruett
+Copyright : 2011
+By : University of Mississippi Medical Center
+
+<branch>
+  <name> CLINIC </name>
+  <label> Clinic </label>
+  <parent> MAINMENU </parent>
+</branch>
+
+<?path Display\Tree\Clinic ?>
+
+<leaf>
+  <name> Loop Dashboard</name>
+  <label> Dashboard </label>
+  <parent> CLINIC </parent>
+</leaf>
+
+<leaf>
+  <name> Rat Bolus</name>
+  <label> Bolus </label>
+  <parent> CLINIC </parent>
+</leaf>
+
+<leaf>
+  <name> AUC </name>
+  <label> Curve Integration </label>
+  <parent> CLINIC </parent>
+</leaf>
+
+End     
+      
+  

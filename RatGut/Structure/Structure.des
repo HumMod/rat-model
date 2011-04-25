@@ -1,0 +1,50 @@
+HumMod / Structure.DES
+
+Created : 21-Oct-04
+Last Modified : 2011-01-03
+Author : Tom Coleman
+Copyright : 2008-2010
+By : University of Mississippi Medical Center
+
+<?path RatGut\Structure ?>
+
+<?include Gut\TalmageSimpleGut.DES ?>
+
+
+<?include Vitamin D\TalmageVitD.DES ?>
+<?include AUC\AUC.DES ?>
+
+<structure><name> Structure </name>
+
+<definitions>
+
+<block>
+  <name> Parms </name>
+  <call> Stomach.Parms </call>
+  <call> AUC.Parms </call>
+  <call> TalmageVitD.Parms </call>
+</block>
+
+
+<block>
+  <name> Dervs </name>
+  <call> Stomach.Dervs </call>
+  <call> Duodenum.Dervs </call>
+  <call> Jejunum.Dervs </call>
+  <call> Ilium.Dervs </call>
+  <call> TalmageVitD.Dervs </call>
+  <call> AUC.Dervs </call>
+</block>
+
+
+<block>
+  <name> Wrapup </name>
+  <call> AUC.Wrapup </call>
+  <call> TalmageVitD.Wrapup </call>
+
+</block>
+
+</definitions>
+</structure>
+
+End                                                  

@@ -1,0 +1,81 @@
+ HumMod / AUC
+
+Created : 10-Sep-10
+Last Modified : 29-Oct-10
+Author : W Pruett
+Copyright : 2010-2010
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+
+<structure><name> AUC </name>
+
+<variables>
+  <var><name>StartTime</name><val> 0 </val></var>
+  <var><name>TestAUC</name><val> 0 </val></var>
+  <var><name> Total </name><val> 0 </val></var>
+
+</variables>
+
+<equations>
+
+
+ <diffeq>
+   <name> AUCDuodAbsorption </name>
+   <integralname> AUCDuodAbsorption </integralname>
+   <initialval> 0 </initialval>
+   <dervname> ChangeDuodAbsorption </dervname>
+   <errorlim> 0.0001 </errorlim>
+ </diffeq>
+
+ <diffeq>
+   <name> AUCJejunumAbs </name>
+   <integralname> AUCJejunumAbs </integralname>
+   <initialval> 0 </initialval>
+   <dervname> ChangeJejunumAbs </dervname>
+   <errorlim> 0.0001 </errorlim>
+ </diffeq>
+
+ <diffeq>
+   <name> AUCIliumAbs </name>
+   <integralname> AUCIliumAbs </integralname>
+   <initialval> 0 </initialval>
+   <dervname> ChangeIliumAbs </dervname>
+   <errorlim> 0.0001 </errorlim>
+ </diffeq>
+
+</equations>
+
+<definitions>
+
+<block>
+ <name>Parms</name>
+
+
+</block>
+  
+<block>
+ <name> AUC </name> 
+  <def><name> TestAUC</name><val> NOT TestAUC </val></def>
+</block>
+
+<block>
+ <name> Dervs </name> 
+
+ <def><name> ChangeDuodAbsorption </name><val> TestAUC * Duodenum.Absorption </val></def> 
+ <def><name> ChangeIliumAbs </name><val> TestAUC * Ilium.Absorption </val></def> 
+ <def><name> ChangeJejunumAbs</name><val> TestAUC * Jejunum.Absorption </val></def> 
+
+
+
+</block>
+
+<block><name> Wrapup</name>
+  <def><name> Total</name><val> AUCDuodAbsorption + AUCJejunumAbs + AUCIliumAbs </val></def>
+ </block>
+
+</definitions>
+</structure>
+
+End                                                                                                                                                                                                                                                                                                                               
+   
+                                                          

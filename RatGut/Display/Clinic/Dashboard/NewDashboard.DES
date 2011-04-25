@@ -1,0 +1,38 @@
+ Calcium Panel
+
+Created : 17-Oct-10
+Last Modified : 17-Oct-10
+Author : W Pruett
+Copyright : 2010
+By : University of Mississippi Medical Center
+Solver : Digital Human (V1.0)
+
+<panel><name> Loop Dashboard </name>
+
+
+
+<showclock>
+   <row> 0.5 </row><col> 36 </col>
+   <name> System.X </name>
+   <ampm/>
+   <days/>
+</showclock>
+
+
+<showpanelname>
+  <row> 0.5 </row><col> 1.0 </col>
+</showpanelname>
+
+<?path RatGut\Display\Clinic\Dashboard\ ?>
+
+
+<?include NewGut.DES ?>
+<?include NewAUC.DES ?>
+
+
+</panel>
+
+End
+                                                                                                                                                                                                                                                                                                       
+ 
+                                                                                                                                                                                                

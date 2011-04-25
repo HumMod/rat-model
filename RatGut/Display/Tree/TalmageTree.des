@@ -1,0 +1,61 @@
+ Tree
+
+Created : 13-Sep-10
+Last Modified : 23-Jun-09
+Author : W Pruett
+Copyright : 2010
+By : University of Mississippi Medical Center
+Solver : Digital Human (V1.0)
+
+Panels are
+
+   Calcium
+   Kidney Panel
+   Vit D
+   Bolus
+   <!--Serum Ca++-->
+
+<tree>
+
+<branch>
+  <name> Panels </name>
+  <label> Panels </label>
+  <parent> MAINMENU </parent>
+</branch>
+
+<leaf>
+  <name> Rat Dashboard </name>
+  <label> Calcium Panel </label>
+  <parent> Panels </parent>
+</leaf>
+
+
+<leaf>
+  <name> TalmageVitamin D Panel </name>
+  <label> Vitamin D Panel </label>
+  <parent> Panels </parent>
+</leaf>
+
+
+<leaf>
+  <name> TalmageBolus </name>
+  <label> Bolus </label>
+  <parent> Panels </parent>
+</leaf>
+
+<separatorbar>
+  <parent> Panels </parent>
+</separatorbar>
+
+<leaf>
+  <name> Graphs </name>
+  <label> Graphs </label>
+  <parent> Panels </parent>
+</leaf>
+
+</tree>
+
+End
+                                      
+      
+           

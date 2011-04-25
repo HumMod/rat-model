@@ -1,0 +1,43 @@
+ HumMod / Gut
+
+Created : 27-Oct-10
+Last Modified : 28-Feb-11
+Author : W Pruett
+Copyright : 2010-2010
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+   
+<structure><name>GutPO4</name>
+
+<variables>
+  <parm><name> Frac </name><val>.03 </val></parm><!-- passive phosphate absorption factor-->
+
+  <var><name> PO4In </name></var><!--per minute intake-->
+  <var><name> Absorption </name></var>
+  <var><name> FecalPO4 </name></var>
+</variables>
+
+<equations>
+ <diffeq>
+  <name> Mass </name>  
+     <integralname> Mass </integralname>
+     <initialval> 0.1 </initialval>
+     <dervname> Change </dervname>
+     <errorlim> .0001 </errorlim>
+ </diffeq>
+
+</equations>
+<definitions>
+
+ <block>
+ <name>Dervs </name>
+   <def><name> Absorption </name> <val> Frac * Mass </val></def>
+   <def><name> FecalPO4 </name><val> Mass * DistalSmallIntestine.WashOut </val></def>
+   <def><name> Change </name><val> StomachPO4.ToIntestine - Absorption - FecalPO4 </val></def>
+
+ </block>
+</definitions>  
+
+</structure>                                                                                                                                                  
+   
+                                                                               
