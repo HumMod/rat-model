@@ -21,7 +21,7 @@ Solver : Digital Human (V1.0)
 </editbox>
 
 
- <showgraph>
+ <!--<showgraph>
   <row> 3.0 </row><col> 1.0 </col>
   <high> 10 </high><wide> 40 </wide>
   <leftmargin> 15 </leftmargin>
@@ -48,7 +48,7 @@ Solver : Digital Human (V1.0)
     </yvar>
      <scale><min> 0 </min><max> .05 </max></scale>
 </yaxis>
-</showgraph>
+</showgraph>-->
 
 
 

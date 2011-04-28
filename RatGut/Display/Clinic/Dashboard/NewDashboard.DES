@@ -23,11 +23,13 @@ Solver : Digital Human (V1.0)
   <row> 0.5 </row><col> 1.0 </col>
 </showpanelname>
 
-<?path RatGut\Display\Clinic\Dashboard\ ?>
+<?path C:\Documents and Settings\Hester_lab\Desktop\rat-model\RatGut\Display\Clinic\Dashboard\ ?>
 
 
 <?include NewGut.DES ?>
 <?include NewAUC.DES ?>
+<?include Loop.DES ?>
+<?include Parms.DES ?>
 
 
 </panel>

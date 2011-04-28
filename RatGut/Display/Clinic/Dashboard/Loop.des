@@ -9,36 +9,27 @@ Solver : DES 2005
 Schema : 
 
 
-<structurename> Loop </structurename>
+<structurename> StomachParms </structurename>
 
 <groupbox>
    <row> 2.0 </row>
    <col> 51.0 </col>
    <high> 7.5 </high>
-   <wide> 37.0 </wide>
-   <title> Load control </title>
+   <wide> 45.0 </wide>
+   <title> Multipliers </title>
 
-
-<repeatlist>
-  <name> Dose </name>
-  <repeat>
-    <reps> 20 </reps>
-    <stepsize> 10 </stepsize>
-  </repeat>
-</repeatlist>
 
 <editbox>
   <row> 1.0 </row><col> 1 </col>
-  <name> Load </name>
-  <label> Dose </label>
+  <name> WashMult </name>
+  <label> Washout multiplier </label>
 </editbox>
 
-<showvalue>
-  <row> 3 </row><col> 1 </col>
-  <name> TestLoad </name>
-  <label> TestLoad </label>
-</showvalue>
-
+<editbox>
+  <row> 3.0 </row><col> 1 </col>
+  <name> Mult </name>
+  <label> Active absorption multiplier </label>
+</editbox>
 
 </groupbox>
 

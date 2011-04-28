@@ -6,7 +6,7 @@ Author : Tom Coleman
 Copyright : 2008-2010
 By : University of Mississippi Medical Center
 
-<?path RatGut\Structure ?>
+<?path C:\Documents and Settings\Hester_lab\Desktop\rat-model\RatGut\Structure ?>
 
 <?include Gut\TalmageSimpleGut.DES ?>
 
@@ -20,7 +20,9 @@ By : University of Mississippi Medical Center
 
 <block>
   <name> Parms </name>
+  <call> Loop.Parms </call>
   <call> Stomach.Parms </call>
+  <call> StomachParms.Parms </call>
   <call> AUC.Parms </call>
   <call> TalmageVitD.Parms </call>
 </block>
@@ -28,6 +30,7 @@ By : University of Mississippi Medical Center
 
 <block>
   <name> Dervs </name>
+  <call> StomachParms.Dervs </call>
   <call> Stomach.Dervs </call>
   <call> Duodenum.Dervs </call>
   <call> Jejunum.Dervs </call>
