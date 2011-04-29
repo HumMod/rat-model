@@ -40,10 +40,10 @@ Schema : DES V1.0
  <block>
  <name>Dervs </name>
    <def><name> Washout </name><val> Wash * StomachParms.WashMult</val></def>
-   <def><name> Absorption </name><val> Mass * c </val></def>
+   <def><name> Absorption </name><val> Mass * StomachParms.c </val></def>
 
  <if><test> Mass GT .0001 </test>
-     <true><def><name> Out </name><val> Washout * Mass </val></def></true>
+     <true><def><name> Out </name><val> Washout * ( Mass - Absorption ) </val></def></true>
      <false><def><name> Out </name><val> 0 </val></def></false>
  </if>
 

@@ -13,6 +13,8 @@ Schema : DES V1.0
   <var><name>StartTime</name><val> 0 </val></var>
   <var><name>TestAUC</name><val> 0 </val></var>
   <var><name> Total </name><val> 0 </val></var>
+  <var><name> Abs </name></var>
+  <var><name> TAbsFrac </name></var>
 
 </variables>
 
@@ -47,12 +49,7 @@ Schema : DES V1.0
 
 <definitions>
 
-<block>
- <name>Parms</name>
-
-
-</block>
-  
+ 
 <block>
  <name> AUC </name> 
   <def><name> TestAUC</name><val> NOT TestAUC </val></def>
@@ -60,17 +57,16 @@ Schema : DES V1.0
 
 <block>
  <name> Dervs </name> 
-
+  <def><name> Abs </name><val> Duodenum.Absorption + Ilium.Absorption + Jejunum.Absorption </val></def>
  <def><name> ChangeDuodAbsorption </name><val> TestAUC * Duodenum.Absorption </val></def> 
  <def><name> ChangeIliumAbs </name><val> TestAUC * Ilium.Absorption </val></def> 
  <def><name> ChangeJejunumAbs</name><val> TestAUC * Jejunum.Absorption </val></def> 
-
-
 
 </block>
 
 <block><name> Wrapup</name>
   <def><name> Total</name><val> AUCDuodAbsorption + AUCJejunumAbs + AUCIliumAbs </val></def>
+  <def><name> TAbsFrac </name><val> Total / Stomach.TotalIntake </val></def>
  </block>
 
 </definitions>

@@ -41,6 +41,15 @@ Schema : DES V1.0
      <errorlim> .0001 </errorlim>
  </diffeq>
 
+ <diffeq>
+  <name> TotalIntake </name>  
+     <integralname> TotalIntake </integralname>
+     <initialval> 0.001 </initialval>
+     <dervname> IntakeChange </dervname>
+     <errorlim> .001 </errorlim>
+ </diffeq>
+
+
 </equations>
 
 
@@ -124,7 +133,7 @@ Schema : DES V1.0
  </if>
 
   <def><name> Change </name><val> CaIn - ToDuod </val></def>
-
+  <def><name> IntakeChange </name><val> CaIn * AUC.TestAUC </val></def>
 
  </block>
 

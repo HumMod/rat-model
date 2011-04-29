@@ -14,9 +14,9 @@ Schema : DES V1.0
 <!-- active factors -->
   <var><name> AbsFrac </name></var>
 
-  <parm><name> A </name><val> .0083 </val></parm>
-  <parm><name> S </name><val> .65  </val></parm>
-  <parm><name> n </name><val> .9 </val></parm>
+  <parm><name> A </name><val> .0059 </val></parm>
+  <parm><name> S </name><val> .03  </val></parm>
+  <parm><name> n </name><val> 1 </val></parm>
   <var><name> c </name></var>
 
 <!-- Total effect -->
@@ -49,30 +49,19 @@ Schema : DES V1.0
 <definitions>
 
  <block>
- <name> Parms </name>
-
- </block>
-
- <block>
  <name>Dervs </name>
   <def><name> c </name><val> StomachParms.c </val></def>
   <def><name> Washout </name><val> Wash * StomachParms.WashMult </val></def>
-  <def><name> Active </name><val> StomachParms.JmaxMult * StomachParms.Mult * A * ( Mass ^ n ) / ( ( Mass ^ n ) + ( S ^ n ) ) </val></def>
 
-  <def><name> Absorption </name><val> Mass * c + Active </val></def>
+ <def><name> Active </name><val> StomachParms.JmaxMult * StomachParms.Mult * A * ( Mass ^ n ) / ( ( Mass ^ n ) + ( S ^ n ) ) </val></def>
 
-  <if><test> Mass GT .001 </test>
-   <true><def><name> Out </name><val> Washout * Mass </val></def></true>
-   <false><def><name> Out </name><val> 0 </val></def></false>
- </if>
-
- <def><name> Change </name><val> Stomach.ToDuod - Absorption - Out </val></def>
+  <def><name> Absorption </name><val> ( Mass * c + Active ) MIN Mass </val></def>
+  <def><name> Out </name><val> Washout * ( Mass - Absorption ) </val></def>
+  <def><name> Change </name><val> Stomach.ToDuod - Absorption - Out </val></def>
 
  </block>
 
-
 </definitions>  
-
 </structure>                                                                                                                                                  
    
                                                                                

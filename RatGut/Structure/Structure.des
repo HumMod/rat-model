@@ -23,7 +23,6 @@ By : University of Mississippi Medical Center
   <call> Loop.Parms </call>
   <call> Stomach.Parms </call>
   <call> StomachParms.Parms </call>
-  <call> AUC.Parms </call>
   <call> TalmageVitD.Parms </call>
 </block>
 
