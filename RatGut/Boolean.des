@@ -1,0 +1,195 @@
+Simple DE
+
+Created : 30-Mar-09
+Last Modified : 30-Mar-09
+Author : Tom Coleman
+Copyright : 2008-2009
+By : University of Mississippi Medical Center
+
+<?xml version = '1.0' ?>
+
+<model>
+
+<title><basic> Boolean </basic></title>
+
+<structure> <name> Model </name>
+
+
+<variables> ------------------------------------
+  <var><name> A </name><val> 1 </val></var>
+  <var><name> B </name><val>1</val></var>
+  <var><name> C </name><val>1</val></var>
+  <var><name> D </name><val>1</val></var>
+
+  <var><name> AA </name></var>
+  <var><name> BB </name></var>
+  <var><name> CC </name></var>
+  <var><name> DD </name></var>
+
+</variables>
+
+<definitions> ----------------------------------
+  <block><name> Parms </name>
+    <def><name> AA </name><val> A AND B </val></def>
+    <def><name> BB </name><val> A AND C </val></def>
+    <def><name> CC </name><val> ( A OR C ) AND ( NOT ( A OR C ) ) </val></def>
+   <!-- 
+    <def><name> DD </name><val> ( C OR D ) AND B </val></def>
+    <def><name> A </name><val> AA </val></def>
+    <def><name> D </name><val> DD </val></def>-->
+  </block>
+  <block><name>WrapUp</name>
+    <def><name> A </name><val> AA </val></def>
+    <def><name> B </name><val> BB </val></def>
+    <def><name> C </name><val> CC </val></def>
+
+  </block>
+</definitions>
+
+</structure>
+
+<math> --------------------------------------
+  <dervs> Model.Parms </dervs>
+  <wrapup> Model.WrapUp </wrapup>
+</math>
+
+<control> ---------------------------------------
+ <gofor>
+   <solutionint> 10 </solutionint>
+   <displayint> 1 </displayint>
+   <menuitem> 10 </menuitem>
+ </gofor>
+</control>
+
+<display> ---------------------------------------
+
+<panel> <name> Boolean </name>
+
+<structurename> Model </structurename>
+
+<showpanelname>
+  <row> 0.5 </row><col> 1.0 </col>
+</showpanelname>
+
+<showvalue>
+  <row> 2 </row><col> 1 </col>
+  <name> CC </name>
+  <format><decimal> 1 </decimal></format>
+  <label> CC </label>
+</showvalue>
+
+<showvalue>
+  <row> 3 </row><col> 1 </col>
+  <name> System.Dx </name>
+  <format><decimal> 1 </decimal></format>
+  <label> Dx </label>
+</showvalue>
+
+<showgraph>
+  <row> 5.0 </row><col> 1.0 </col>
+  <high> 10 </high><wide> 30 </wide>
+  <leftmargin> 10 </leftmargin>
+  <xaxis>
+     <name> System.X </name>
+     <label> Time </label>
+     <scale><min> 0 </min><max> 5 </max><inc>1</inc></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> A </name>
+      <label> A </label>
+      <linecolor> RED </linecolor>
+    </yvar>
+    <yvar>
+      <name> AA </name>
+      <label> AA </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+
+  <scale><min> 0 </min><max> 1 </max></scale>
+  </yaxis>
+</showgraph>
+
+<showgraph>
+  <row> 17.0 </row><col> 1.0 </col>
+  <high> 10 </high><wide> 30 </wide>
+  <leftmargin> 10 </leftmargin>
+  <xaxis>
+     <name> System.X </name>
+     <label> Time </label>
+     <scale><min> 0 </min><max> 5 </max><inc>1</inc></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> B </name>
+      <label> B </label>
+      <linecolor> RED </linecolor>
+    </yvar>
+    <yvar>
+      <name> BB </name>
+      <label> BB </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+
+  <scale><min> 0 </min><max> 1 </max></scale>
+  </yaxis>
+</showgraph>
+
+<showgraph>
+  <row> 5.0 </row><col> 33.0 </col>
+  <high> 10 </high><wide> 30 </wide>
+  <leftmargin> 10 </leftmargin>
+  <xaxis>
+     <name> System.X </name>
+     <label> Time </label>
+     <scale><min> 0 </min><max> 5 </max><inc>1</inc></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> C </name>
+      <label> C </label>
+      <linecolor> RED </linecolor>
+    </yvar>
+    <yvar>
+      <name> CC </name>
+      <label> CC </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+
+  <scale><min> 0 </min><max> 1 </max></scale>
+  </yaxis>
+</showgraph>
+<!--
+<showgraph>
+  <row> 17.0 </row><col> 33.0 </col>
+  <high> 10 </high><wide> 30 </wide>
+  <leftmargin> 10 </leftmargin>
+  <xaxis>
+     <name> System.X </name>
+     <label> Time </label>
+     <scale><min> 0 </min><max> 20 </max><inc>2</inc></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> D </name>
+      <label> D </label>
+      <linecolor> RED </linecolor>
+    </yvar>
+    <yvar>
+      <name> DD </name>
+      <label> DD </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+
+  <scale><min> 0 </min><max> 1 </max></scale>
+  </yaxis>
+</showgraph>-->
+
+
+
+</panel>
+</display>
+
+</model>
+
+End                                                                                                                   
