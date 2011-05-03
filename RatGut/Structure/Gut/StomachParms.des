@@ -15,7 +15,7 @@ Schema : DES V1.0
 
   <parm><name> WashOut </name><val> .0225 </val></parm> 95% washout in 150 minutes
   <parm><name> MealTime </name><val>12</val></parm>
-  <parm><name> Mult </name><val> 1 </val></parm>
+  <parm><name> Mult </name><val> .89 </val></parm>
   <parm><name> WashMult </name><val> 1 </val></parm>
   <var><name> cTarget </name></var>
   <var><name> Diet% </name></var>
@@ -26,15 +26,15 @@ Schema : DES V1.0
  <diffeq>
   <name> c </name>  
      <integralname> c </integralname>
-     <initialval> 0.0033 </initialval>.0033
+     <initialval> 0.0031 </initialval>.0033
      <dervname> cChange </dervname>
      <errorlim> .000001 </errorlim>
  </diffeq>
 
  <diffeq>
-  <name> c </name>  
+  <name> JmaxMult </name>  
      <integralname> JmaxMult </integralname>
-     <initialval> .9036 </initialval>1
+     <initialval> 1.096 </initialval>1
      <dervname> JChange </dervname>
      <errorlim> .00001 </errorlim>
  </diffeq>
@@ -44,17 +44,17 @@ Schema : DES V1.0
 <definitions>
 <block><name> Parms </name>
 
-<def><name> Diet% </name><val> Stomach.Intake / 15000 </val></def>
-<def><name> cTarget </name><val> .003 + ( .001 * ( .01 / (.01 + Diet% ) ) ) </val></def><!-- derived from Pansu, Bellaton, Bronner, 1981-->
-<def><name>JmaxMultTarget</name><val> .5 + ( .01 / ( .01 + Diet% ) ) </val></def>
+<def><name> Diet% </name><val> Stomach.Intake / 1440 </val></def>
+<def><name> cTarget </name><val> .0031 </val></def><!-- derived from Pansu, Bellaton, Bronner, 1981-->
+<def><name>JmaxMultTarget</name><val> .5 + ( .1 / ( .1 + Diet% ) ) </val></def>
 
 </block>
 
 
 <block><name> Dervs </name>
 
-<def><name> JChange </name><val> .0001 * ( JmaxMultTarget - JmaxMult ) </val></def>
-<def><name> cChange </name><val> .0001 * (cTarget - c ) </val></def>
+<def><name> JChange </name><val>   .00002 * ( JmaxMultTarget - JmaxMult ) </val></def>
+<def><name> cChange </name><val>  .00002 * (cTarget - c ) </val></def>
 
 </block>
 </definitions>

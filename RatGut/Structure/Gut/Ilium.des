@@ -31,7 +31,7 @@ Schema : DES V1.0
      <integralname> Mass </integralname>
      <initialval> 0 </initialval>
      <dervname> Change </dervname>
-     <errorlim> .001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 
 </equations>
@@ -40,7 +40,7 @@ Schema : DES V1.0
  <block>
  <name>Dervs </name>
    <def><name> Washout </name><val> Wash * StomachParms.WashMult</val></def>
-   <def><name> Absorption </name><val> Mass * StomachParms.c </val></def>
+   <def><name> Absorption </name><val> ( StomachParms.c * Mass ) MIN Mass </val></def>
 
  <if><test> Mass GT .0001 </test>
      <true><def><name> Out </name><val> Washout * ( Mass - Absorption ) </val></def></true>

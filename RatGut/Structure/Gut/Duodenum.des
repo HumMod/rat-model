@@ -40,7 +40,7 @@ Schema : DES V1.0
      <integralname> Mass </integralname>
      <initialval> 0 </initialval>
      <dervname> Change </dervname>
-     <errorlim> .000001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 
 </equations>
@@ -55,7 +55,7 @@ Schema : DES V1.0
 
  <def><name> Active </name><val> StomachParms.JmaxMult * StomachParms.Mult * A * ( Mass ^ n ) / ( ( Mass ^ n ) + ( S ^ n ) ) </val></def>
 
-  <def><name> Absorption </name><val> ( Mass * c + Active ) MIN Mass </val></def>
+  <def><name> Absorption </name><val> ( c * Mass + Active ) MIN Mass </val></def>
   <def><name> Out </name><val> Washout * ( Mass - Absorption ) </val></def>
   <def><name> Change </name><val> Stomach.ToDuod - Absorption - Out </val></def>
 

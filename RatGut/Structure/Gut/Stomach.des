@@ -36,9 +36,9 @@ Schema : DES V1.0
  <diffeq>
   <name> Mass </name>  
      <integralname> Mass </integralname>
-     <initialval> 0.01 </initialval>
+     <initialval> 0.001 </initialval>
      <dervname> Change </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .000001 </errorlim>
  </diffeq>
 
  <diffeq>
@@ -117,7 +117,7 @@ Schema : DES V1.0
  </case>
 </testcase>
  <if>
-   <test> ( WashOut * Mass ) LT .0001 </test>
+   <test> ( WashOut * Mass ) LT .000001 </test>
   <true>
    <def>
 	<name> ToDuod </name>

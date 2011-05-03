@@ -52,6 +52,20 @@ Solver : Digital Human (V1.0)
    <label> Total absorption </label>
  </showvalue>
 
+ <showvalue>
+   <row> 10.5 </row><col> 1.0 </col>
+   <name> AUC.AUCActive </name>
+   <format><decimal> 3 </decimal></format>
+   <label> Active </label>
+ </showvalue>
+
+ <showvalue>
+   <row> 12.5 </row><col> 1.0 </col>
+   <name> AUC.Passive </name>
+   <format><decimal> 3 </decimal></format>
+   <label> Passive </label>
+ </showvalue>
+
 </groupbox>
 
 End

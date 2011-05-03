@@ -41,6 +41,33 @@ Solver : Digital Human (V1.0)
    <label> total in </label>
  </showvalue>
 
+<showgraph>
+  <row>7</row><col> 1 </col>
+  <high> 8 </high><wide> 42 </wide>
+  <leftmargin> 10 </leftmargin>
+  <xaxis>
+     <name> System.X </name>
+     <label> Time </label>
+     <scale><min> 0 </min><max> 360 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> AUC.TotalChange</name>
+      <label> Absorption </label>
+      <linecolor> BLACK </linecolor>
+    </yvar>
+     <yvar>
+      <name> Stomach.Mass</name>
+      <label> stomach mass </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <scale><min> 0</min><max> .1 </max></scale>
+  </yaxis>
+
+</showgraph>
+
+
+
 
 </groupbox>
 

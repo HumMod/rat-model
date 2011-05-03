@@ -15,7 +15,8 @@ Schema : DES V1.0
   <var><name> Total </name><val> 0 </val></var>
   <var><name> Abs </name></var>
   <var><name> TAbsFrac </name></var>
-
+  <var><name> Passive</name><val> 0 </val></var>
+  <var><name> TotalChange</name></var>
 </variables>
 
 <equations>
@@ -45,6 +46,14 @@ Schema : DES V1.0
    <errorlim> 0.0001 </errorlim>
  </diffeq>
 
+ <diffeq>
+   <name> AUCActive </name>
+   <integralname> AUCActive </integralname>
+   <initialval> 0 </initialval>
+   <dervname> ChangeActive </dervname>
+   <errorlim> 0.0001 </errorlim>
+ </diffeq>
+
 </equations>
 
 <definitions>
@@ -61,11 +70,13 @@ Schema : DES V1.0
  <def><name> ChangeDuodAbsorption </name><val> TestAUC * Duodenum.Absorption </val></def> 
  <def><name> ChangeIliumAbs </name><val> TestAUC * Ilium.Absorption </val></def> 
  <def><name> ChangeJejunumAbs</name><val> TestAUC * Jejunum.Absorption </val></def> 
-
+ <def><name> ChangeActive </name><val> TestAUC * ( Duodenum.Active + Jejunum.Active ) </val></def>
+ <def><name> TotalChange </name><val> ChangeDuodAbsorption + ChangeIliumAbs + ChangeJejunumAbs </val></def>
 </block>
 
 <block><name> Wrapup</name>
   <def><name> Total</name><val> AUCDuodAbsorption + AUCJejunumAbs + AUCIliumAbs </val></def>
+  <def><name> Passive </name><val> TestAUC * ( Total - AUCActive ) </val></def>
   <def><name> TAbsFrac </name><val> Total / Stomach.TotalIntake </val></def>
  </block>
 
