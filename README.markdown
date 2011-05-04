@@ -1,3 +1,4 @@
 Rat Model
 ---------
-More coming.
+After extraction, click "HumMod.exe" to open the model.
+
