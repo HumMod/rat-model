@@ -1,0 +1,36 @@
+ HumMod / Bolus
+
+Created : 1-Nov-10
+Last Modified : 1-Nov-10
+Author : W Pruett
+Copyright : 2010-2010
+By : University of Mississippi Medical Center
+Solver : DES 2005
+Schema : 
+
+
+<structurename> StomachParms </structurename>
+
+<groupbox>
+   <row> 9.0 </row>
+   <col> 51.0 </col>
+   <high> 7.5 </high>
+   <wide> 45.0 </wide>
+   <title> Multipliers </title>
+
+
+<showvalue>
+  <row> 1.0 </row><col> 1 </col>
+  <name> c</name>
+  <label> c </label>
+</showvalue>
+
+<showvalue>
+  <row> 3.0 </row><col> 1 </col>
+  <name> JmaxMult </name>
+  <label> Active absorption multiplier </label>
+</showvalue>
+
+</groupbox>
+
+
