@@ -13,11 +13,11 @@ Schema : DES V1.0
 
 <!-- active factors -->
   <var><name> AbsFrac </name></var>
-
+  <var><name> Alpha </name></var>
+  <var><name> Beta </name></var>
   <parm><name> A </name><val> .0014 </val></parm>
-  <parm><name> S </name><val> .9 </val></parm>
-  <parm><name> n </name><val> 1 </val></parm>
-  <parm><name> c </name><val> .0031  </val></parm>
+  <parm><name> b </name><val> .04 </val></parm>
+  <parm><name> c </name><val> .00300  </val></parm>
   <parm><name> cH2O </name><val> .0043 </val></parm> <!-- adjusted ca passive for molecular weight -->
   <parm><name> Sensitivity</name><val> .00001 </val></parm>
 
@@ -53,10 +53,9 @@ Schema : DES V1.0
 
   <var><name> FracMass </name></var>
   <var><name> Abs </name></var>
-  <parm><name> Wash </name><val>.12</val></parm>
+  <parm><name> Wash </name><val>.108</val></parm>
   <var><name> Washout </name></var>
   <var><name> Out </name><val> 0 </val></var>
-  <var><name> Mult </name></var>
 </variables>
 
 ==================================================
@@ -134,80 +133,6 @@ Schema : DES V1.0
      <dervname> Change9 </dervname>
      <errorlim> .00001 </errorlim>
  </diffeq>
-
-=========================================
- <diffeq>
-  <name> H2OMass1 </name>  
-     <integralname> H2OMass1 </integralname>
-     <initialval> 1 </initialval>
-     <dervname> H2OChange1 </dervname>
-     <errorlim> .001 </errorlim>
- </diffeq>
-
- <diffeq> 
- <name> H2OMass2 </name>  
-     <integralname> H2OMass2 </integralname>
-     <initialval> 1 </initialval>
-     <dervname> H2OChange2 </dervname>
-     <errorlim> .00001 </errorlim>
- </diffeq>
-
- <diffeq> 
-  <name> H2OMass3 </name>  
-     <integralname> H2OMass3 </integralname>
-     <initialval> 1 </initialval>
-     <dervname> H2OChange3 </dervname>
-     <errorlim> .00001 </errorlim>
- </diffeq>
-
- <diffeq> 
-  <name> H2OMass4 </name>  
-     <integralname> H2OMass4 </integralname>
-     <initialval> 1 </initialval>
-     <dervname> H2OChange4 </dervname>
-     <errorlim> .00001 </errorlim>
- </diffeq>
-
- <diffeq> 
-  <name>H2OMass5 </name>  
-     <integralname> H2OMass5 </integralname>
-     <initialval> 1 </initialval>
-     <dervname> H2OChange5 </dervname>
-     <errorlim> .00001 </errorlim>
- </diffeq>
-
- <diffeq> 
-  <name> H2OMass6 </name>  
-     <integralname> H2OMass6 </integralname>
-     <initialval> 1 </initialval>
-     <dervname> H2OChange6 </dervname>
-     <errorlim> .00001 </errorlim>
- </diffeq>
-
- <diffeq> 
-  <name> H2OMass7 </name>  
-     <integralname> H2OMass7 </integralname>
-     <initialval> 1 </initialval>
-     <dervname> H2OChange7 </dervname>
-     <errorlim> .00001 </errorlim>
- </diffeq>
-
- <diffeq> 
-  <name> H2OMass8 </name>  
-     <integralname> H2OMass8 </integralname>
-     <initialval> 1 </initialval>
-     <dervname> H2OChange8 </dervname>
-     <errorlim> .00001 </errorlim>
- </diffeq>
-
- <diffeq> 
-  <name> H2OMass9 </name>  
-     <integralname> H2OMass9 </integralname>
-     <initialval> 1 </initialval>
-     <dervname> H2OChange9 </dervname>
-     <errorlim> .00001 </errorlim>
- </diffeq>
-
 </equations>
 
 =========================================================
@@ -217,37 +142,28 @@ Schema : DES V1.0
  <name>Dervs </name>
 
   <def><name> Washout</name><val> Wash * StomachParms.WashMult </val></def>
-<def><name> Mult</name><val> StomachParms.Mult </val></def>
+  <def><name> Alpha</name><val> A * StomachParms.JMaxMult </val></def>
+  <def><name> Beta </name><val> b * StomachParms.bMult </val></def>
 
-<def><name> H2OChange1 </name><val> ( Duodenum.H2OMass * Duodenum.Washout ) - ( ( cH2O + Washout ) * H2OMass1 ) </val></def>
-<def><name> H2OChange2 </name><val> ( Washout * H2OMass1 ) - ( ( cH2O + Washout ) * H2OMass2 ) </val></def>
-<def><name> H2OChange3 </name><val>( Washout * H2OMass2 ) - ( ( cH2O + Washout ) * H2OMass3 ) </val></def>
-<def><name> H2OChange4 </name><val> ( Washout * H2OMass3 ) - ( ( cH2O + Washout ) * H2OMass4 ) </val></def>
-<def><name> H2OChange5 </name><val>( Washout * H2OMass4 ) - ( ( cH2O + Washout ) * H2OMass5 ) </val></def>
-<def><name> H2OChange6 </name><val> ( Washout * H2OMass5 ) - ( ( cH2O + Washout ) * H2OMass6 ) </val></def>
-<def><name> H2OChange7 </name><val> ( Washout * H2OMass6 ) - ( ( cH2O + Washout ) * H2OMass7 ) </val></def>
-<def><name> H2OChange8 </name><val>( Washout * H2OMass7 ) - ( ( cH2O + Washout ) * H2OMass8 ) </val></def>
-<def><name> H2OChange9 </name><val>( Washout * H2OMass8 ) - ( ( cH2O + Washout ) * H2OMass9 ) </val></def>
+ <def><name> Active1 </name><val> Alpha * Mass1 / ( Mass1 + Beta ) </val></def>
+ <def><name> Active2 </name><val> Alpha * Mass2 / ( Mass2 + Beta )  </val></def>
+ <def><name> Active3 </name><val> Alpha * Mass3 / ( Mass3 + Beta )  </val></def>
+ <def><name> Active4 </name><val> Alpha * Mass4 / ( Mass4 + Beta )  </val></def>
+ <def><name> Active5 </name><val> Alpha * Mass5 / ( Mass5 + Beta ) </val></def>
+ <def><name> Active6 </name><val> Alpha * Mass6 / ( Mass6 + Beta )  </val></def>
+ <def><name> Active7 </name><val> Alpha * Mass7 / ( Mass7 + Beta )  </val></def>
+ <def><name> Active8 </name><val> Alpha * Mass8 / ( Mass8 + Beta )  </val></def>
+ <def><name> Active9 </name><val> Alpha * Mass9 / ( Mass9 + Beta ) </val></def>
 
- <def><name> Active1 </name><val> Mult * A * ( ( Mass1 / H2OMass1 ) ^ n ) / ( ( ( Mass1 / H2OMass1 ) ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active2 </name><val> Mult * A * ( ( Mass2 / H2OMass2 ) ^ n ) / ( ( ( Mass2 / H2OMass2 ) ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active3 </name><val> Mult * A * ( ( Mass3 / H2OMass3 ) ^ n ) / ( ( ( Mass3 / H2OMass3 ) ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active4 </name><val> Mult * A * ( ( Mass4 / H2OMass4 ) ^ n ) / ( ( ( Mass4 / H2OMass4 ) ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active5 </name><val> Mult * A * ( ( Mass5 / H2OMass5 ) ^ n ) / ( ( ( Mass5 / H2OMass5 ) ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active6 </name><val> Mult * A * ( ( Mass6 / H2OMass6 ) ^ n ) / ( ( ( Mass6 / H2OMass6 ) ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active7 </name><val> Mult * A * ( ( Mass7 / H2OMass7 ) ^ n ) / ( ( ( Mass7 / H2OMass7 ) ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active8 </name><val> Mult * A * ( ( Mass8 / H2OMass8 ) ^ n ) / ( ( ( Mass8 / H2OMass8 ) ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active9 </name><val> Mult * A * ( ( Mass9 / H2OMass9 ) ^ n ) / ( ( ( Mass9 / H2OMass9 ) ^ n ) + ( S ^ n ) ) </val></def>
-
- <def><name> Absorption1 </name><val> ( Mass1 * c + Active1 ) MIN Mass1  </val></def>
- <def><name> Absorption2 </name><val> ( Mass2 * c + Active2 ) MIN Mass2  </val></def>
- <def><name> Absorption3 </name><val> ( Mass3 * c + Active3 ) MIN Mass3  </val></def>
- <def><name> Absorption4 </name><val> ( Mass4 * c + Active4 ) MIN Mass4  </val></def>
- <def><name> Absorption5 </name><val> ( Mass5 * c + Active5 ) MIN Mass5  </val></def>
- <def><name> Absorption6 </name><val> ( Mass6 * c + Active6 ) MIN Mass6  </val></def>
- <def><name> Absorption7 </name><val> ( Mass7 * c + Active7 ) MIN Mass7  </val></def>
- <def><name> Absorption8 </name><val> ( Mass8 * c + Active8 ) MIN Mass8  </val></def>
- <def><name> Absorption9 </name><val> ( Mass9 * c + Active9 ) MIN Mass8 </val></def>
+ <def><name> Absorption1 </name><val> ( Mass1 * c * StomachParms.cMult + Active1 ) MIN Mass1  </val></def>
+ <def><name> Absorption2 </name><val> ( Mass2 * c * StomachParms.cMult + Active2 ) MIN Mass2  </val></def>
+ <def><name> Absorption3 </name><val> ( Mass3 * c * StomachParms.cMult + Active3 ) MIN Mass3  </val></def>
+ <def><name> Absorption4 </name><val> ( Mass4 * c * StomachParms.cMult + Active4 ) MIN Mass4  </val></def>
+ <def><name> Absorption5 </name><val> ( Mass5 * c * StomachParms.cMult + Active5 ) MIN Mass5  </val></def>
+ <def><name> Absorption6 </name><val> ( Mass6 * c * StomachParms.cMult + Active6 ) MIN Mass6  </val></def>
+ <def><name> Absorption7 </name><val> ( Mass7 * c * StomachParms.cMult + Active7 ) MIN Mass7  </val></def>
+ <def><name> Absorption8 </name><val> ( Mass8 * c * StomachParms.cMult + Active8 ) MIN Mass8  </val></def>
+ <def><name> Absorption9 </name><val> ( Mass9 * c * StomachParms.cMult + Active9 ) MIN Mass8 </val></def>
 
 <if>
   <test> Absorption1 LE Sensitivity </test>

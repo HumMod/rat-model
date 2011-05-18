@@ -1,0 +1,23 @@
+  HumMod / VitaminD
+
+Created : 2010-06-05
+Last Modified : 2010-06-06
+Author : Tom Coleman
+Copyright : 2010-2010
+By : University Of Mississippi Medical Center
+
+<branch>
+  <name> Vitamin D </name>
+  <label> Vitamin D </label>
+  <parent> Physiology </parent>
+</branch>
+
+<leaf>
+  <name> TalmageVitD panel </name>
+  <label> Vitamin D </label>
+  <parent> Vitamin D </parent>
+</leaf>
+
+End     
+    
+     

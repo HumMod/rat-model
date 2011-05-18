@@ -1,0 +1,43 @@
+ HumMod / Bolus
+
+Created : 1-Nov-10
+Last Modified : 1-Nov-10
+Author : W Pruett
+Copyright : 2010-2010
+By : University of Mississippi Medical Center
+Solver : DES 2005
+Schema : 
+
+
+<structurename> StomachParms </structurename>
+
+<groupbox>
+   <row> 2.0 </row>
+   <col> 51.0 </col>
+   <high> 7.5 </high>
+   <wide> 37.0 </wide>
+   <title> Upregulation </title>
+
+
+<editbox>
+  <row> 1.0 </row><col> 1 </col>
+  <name> Mult </name>
+  <label> Multiple </label>
+</editbox>
+
+<editbox>
+  <row> 3.0 </row><col> 1 </col>
+  <name> WashMult </name>
+  <label> Washout Mult </label>
+</editbox>
+
+</groupbox>
+
+
+
+
+
+End
+                                     
+ 
+                      

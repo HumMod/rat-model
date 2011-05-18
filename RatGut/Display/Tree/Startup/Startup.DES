@@ -1,0 +1,67 @@
+HumMod / Startup
+
+Created : 23-Nov-08
+Last Modified : 2010-04-15
+Author : Tom Coleman
+Copyright : 2008-2010
+By : University of Mississippi Medical Center
+Schema : DES V1.0
+
+<branch>
+  <name> STARTUP </name>
+  <label> Startup </label>
+  <parent> MAINMENU </parent>
+</branch>
+
+<?path Display\Tree\Startup\ ?>
+
+
+<branch>
+  <name> Startup-Hormones </name>
+  <label> Hormones </label>
+  <parent> STARTUP </parent>
+</branch>
+
+
+
+<branch>
+  <name> Startup-Brain </name>
+  <label> Brain </label>
+  <parent> STARTUP </parent>
+</branch>
+
+<leaf>
+  <name> Startup-Brain-Size </name>
+  <label> Size </label>
+  <parent> Startup-Brain </parent>
+</leaf>
+
+<leaf>
+  <name> Startup-Brain-Function </name>
+  <label> Function </label>
+  <parent> Startup-Brain </parent>
+</leaf>
+
+
+<branch>
+  <name> Startup-Kidney </name>
+  <label> Kidney </label>
+  <parent> STARTUP </parent>
+</branch>
+
+<leaf>
+  <name> Startup-Kidney-Size </name>
+  <label> Size </label>
+  <parent> Startup-Kidney </parent>
+</leaf>
+
+<leaf>
+  <name> Startup-Kidney-Function </name>
+  <label> Function </label>
+  <parent> Startup-Kidney </parent>
+</leaf>
+
+
+
+
+End

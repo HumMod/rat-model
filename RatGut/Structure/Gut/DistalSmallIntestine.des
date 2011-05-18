@@ -1,0 +1,112 @@
+ HumMod / Gut
+
+Created : 27-Oct-10
+Last Modified : 28-feb-11
+Author : W Pruett
+Copyright : 2010-2010//
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+   
+<structure><name> DistalSmallIntestine </name>
+
+<variables>
+
+<!-- Absorption parameters -->
+
+  <parm><name> WashOut </name><val> .0142 </val></parm> 92.5% washout in 180 minutes
+
+<!-- passive factors -->
+  <parm><name>Slough</name><val>.104</val></parm>
+	<!-- .14 -> 200 mg/day through sloughing of lumenal enterocytes -->
+
+  <parm><name>PassiveFactor</name><val> .231 </val></parm>
+	<!-- passive calcium absorption factor of 20%; this may be a little high; I have references for 13-16%-->
+
+  <var><name> FecalCa </name><val> 0 </val></var>
+
+<!-- active factors -->
+
+  <var><name> AbsFrac </name></var>
+  <var><name> FromDuodenum </name></var>
+  <var><name> Outflow</name></var>
+<!-- Total effect -->
+
+  <var><name> EntericAbsorption </name></var>
+  <var><name> Absorption </name></var>
+  <var><name>NetIntake</name></var>
+
+<!-- timer vars -->
+ 
+ 
+  <parm><name> AbTime </name><val>180</val></parm>
+ 
+
+
+</variables>
+
+<equations>
+
+ <diffeq>
+  <name> Mass </name>  
+     <integralname> Mass </integralname>
+     <initialval> 0.1 </initialval>
+     <dervname> Change </dervname>
+     <errorlim> .0001 </errorlim>
+ </diffeq>
+
+</equations>
+
+
+<definitions>
+
+ <block>
+ <name>Dervs </name>
+
+   <def>
+	<name> FromDuodenum </name>
+	<val> Duodenum.Outflow </val>
+   </def>
+
+   <def>
+	<name> AbsFrac </name>
+	<val>  PassiveFactor / AbTime </val>
+   </def> 
+
+
+   <def>
+	<name> EntericAbsorption </name> 
+	<val> Mass * AbsFrac </val>
+   </def>
+
+   <def>
+	<name> NetIntake </name>
+	<val> Duodenum.Absorption + EntericAbsorption - Slough </val>
+   </def>
+
+   <def>
+	<name> Absorption </name>
+	<val> Duodenum.Absorption + EntericAbsorption </val>
+   </def>
+
+   <def>
+	<name> Outflow </name>
+	<val> WashOut * Mass </val>
+   </def>
+
+   <def>
+	<name> Change </name>
+	<val> FromDuodenum - EntericAbsorption - Outflow </val>
+   </def>
+
+   <def>
+	<name> FecalCa </name>
+	<val> Outflow + Slough </val>
+  </def>
+ </block>
+
+
+</definitions>  
+
+</structure>                                                                                                                                                  
+   
+                                                                               

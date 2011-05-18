@@ -1,0 +1,93 @@
+ HumMod / Bolus
+
+Created : 1-Nov-10
+Last Modified : 1-Nov-10
+Author : W Pruett
+Copyright : 2010-2010
+By : University of Mississippi Medical Center
+Solver : DES 2005
+Schema : 
+
+
+<structurename> StomachParms </structurename>
+
+<groupbox>
+   <row> 2.0 </row>
+   <col> 51.0 </col>
+   <high> 12.5 </high>
+   <wide> 37.0 </wide>
+   <title> Traits</title>
+
+
+
+<editbox>
+  <row> 1.0 </row><col> 1 </col>
+  <name> StartAgeDays </name>
+  <label> Starting age (days) </label>
+</editbox>
+
+<editbox>
+  <row> 2.5 </row><col> 1 </col>
+  <name> DietaryCa% </name>
+  <label> Dietary Ca % </label>
+</editbox>
+
+<editbox>
+  <row> 4.0 </row><col> 1 </col>
+  <name> DietaryDIU </name>
+  <label> Vitamin D (IU/g chow) </label>
+</editbox>
+
+<showvalue>
+  <row> 5.5 </row><col> 1 </col>
+  <name> Weight </name>
+  <label> Weight </label>
+</showvalue>
+
+<showvalue>
+  <row> 6.5 </row><col> 1 </col>
+  <name> DailyCa </name>
+  <label> Daily Ca Intake(mg) </label>
+</showvalue>
+
+<showvalue>
+  <row> 7.5 </row><col> 1 </col>
+  <name> DailyD </name>
+  <label> Daily D Intake (IU) </label>
+</showvalue>
+
+<showvalue>
+  <row> 8.5 </row><col> 1 </col>
+  <name> cMult </name>
+  <label> cMult </label>
+</showvalue>
+
+<showvalue>
+  <row> 9.5 </row><col> 1 </col>
+  <name> JMaxMult </name>
+  <label> Max Active (/minute) </label>
+</showvalue>
+
+<showvalue>
+  <row> 10.5 </row><col> 1 </col>
+  <name> Change </name>
+  <label> CaBD </label>
+</showvalue>
+
+<showvalue>
+  <row> 11.5 </row><col> 1 </col>
+  <name> TargetCaBD </name>
+  <label> TargetCaBD </label>
+</showvalue>
+
+
+</groupbox>
+
+
+
+
+
+End
+                                     
+ 
+                      

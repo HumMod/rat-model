@@ -1,0 +1,110 @@
+ HumMod / Gut
+
+Created : 27-Oct-10
+Last Modified : 28-feb-11
+Author : W Pruett
+Copyright : 2010-2010//
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+   
+<structure><name> Stomach </name>
+
+<variables>
+
+<!-- Absorption parameters -->
+  <var><name> WashOut </name></var>
+  <var><name> MealTime </name></var>
+
+<!-- passive factors -->
+  <var><name> PM </name></var><!--per minute intake-->
+
+<!-- active factors -->
+  <var><name> ToDuod </name></var>
+
+<!-- timer vars -->
+  <var><name> ModTime </name></var>
+  <var><name> CaIn </name></var>
+  <parm><name>TestMeal</name><val>0</val></parm>
+
+</variables>
+
+<equations>
+ <diffeq>
+  <name> Mass </name>  
+     <integralname> Mass </integralname>
+     <initialval> 0.01 </initialval>
+     <dervname> Change </dervname>
+     <errorlim> .0001 </errorlim>
+ </diffeq>
+
+</equations>
+
+
+<definitions>
+ <block>
+ <name>Parms</name>
+
+  <def><name> MealTime </name><val> StomachParms.MealTime </val></def>
+
+ </block>
+
+ <block>
+ <name>Dervs </name>
+
+ <if><test> TestMeal GT 0 </test>
+  <true>
+  <def><name> PM </name><val> TestMeal / MealTime </val></def>
+  </true>
+  <false>
+  <def><name>PM</name><val> StomachParms.DailyCa / ( 5 * MealTime ) </val></def>
+  </false>
+ </if>
+
+  <def><name> ModTime </name><val> ( FRACTPART ( System.X / 1440 ) ) * 1440 </val></def>
+  <def><name> WashOut </name><val> StomachParms.WashOut </val></def>
+
+
+  <testcase>
+<!--   <case>
+    <test> ( 180 LE ModTime ) AND ( ModTime LE ( 180 + MealTime ) ) </test>
+     <def><name> CaIn </name><val> PM </val></def>
+  </case>
+  <case>
+   <test> ( 420 LE ModTime ) AND ( ModTime LE ( 420 + MealTime ) ) </test>
+     <def><name> CaIn </name><val> PM   </val></def>
+  </case>-->
+  <case>
+   <test> ( 780 LE ModTime ) AND ( ModTime LE ( 780 + MealTime ) ) </test>
+     <def><name> CaIn </name><val> PM   </val></def>
+  </case>
+<!--  <case>
+   <test> ( 1140 LE ModTime ) AND ( ModTime LE ( 1140 + MealTime ) ) </test>
+     <def><name> CaIn </name><val> PM   </val></def>
+  </case>
+  <case>
+   <test> ( 1380 LE ModTime ) AND ( ModTime LE ( 1380 + MealTime ) ) </test>
+     <def><name> CaIn </name><val> PM   </val></def>
+  </case>-->
+  <case>
+   <test> TRUE </test>
+       <def><name> CaIn </name><val> 0 </val></def>
+  </case>
+ </testcase>
+ <if>
+   <test> ( WashOut * Mass ) LT .0001 </test>
+  <true>
+   <def><name> ToDuod </name><val> 0 </val></def>
+  </true>
+  <false>
+   <def><name> ToDuod </name><val> WashOut * Mass </val></def>
+  </false>
+ </if>
+ <def><name> Change </name><val> CaIn - ToDuod </val></def>
+
+
+ </block>
+</definitions>  
+
+</structure>                                                                                                                                                  
+   
+                                                                               

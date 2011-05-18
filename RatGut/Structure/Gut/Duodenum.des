@@ -13,27 +13,24 @@ Schema : DES V1.0
 
 <!-- active factors -->
   <var><name> AbsFrac </name></var>
-
-  <parm><name> A </name><val> .0084 </val></parm>
-  <parm><name> S </name><val> .9  </val></parm>
-  <parm><name> n </name><val> 1 </val></parm>
-  <parm><name> c </name><val> .0031  </val></parm>
+  <var><name> Alpha </name></var>
+  <var><name> Beta </name></var>
+  <parm><name> A </name><val> .0033 </val></parm>
+  <parm><name> b </name><val> .04  </val></parm>
+  <parm><name> c </name><val> .00300  </val></parm>
 
 <!-- Total effect -->
   <var><name> Absorption </name></var>
-
   <var><name> FracMass </name></var>
   <var><name> Abs </name></var>
   <var><name> Active </name></var>
-  <parm><name> Wash </name><val> .2 </val></parm>
+  <parm><name> Wash </name><val> .18 </val></parm>
   <var><name> Washout </name></var>
   <var><name> Out </name><val> 0 </val></var>
 
 </variables>
 
 <equations>
-
-
  <diffeq>
   <name> Mass </name>  
      <integralname> Mass </integralname>
@@ -41,15 +38,6 @@ Schema : DES V1.0
      <dervname> Change </dervname>
      <errorlim> .00001 </errorlim>
  </diffeq>
-
- <diffeq>
-  <name> H2OMass </name>  
-     <integralname> H2OMass </integralname>
-     <initialval> 5 </initialval>
-     <dervname> H2OChange </dervname>
-     <errorlim> .00001 </errorlim>
- </diffeq>
-
 </equations>
 
 
@@ -62,23 +50,16 @@ Schema : DES V1.0
 
  <block>
  <name>Dervs </name>
-
+  <def><name> Alpha </name><val> A * StomachParms.JMaxMult </val></def>
+  <def><name> Beta </name><val> b * StomachParms.bMult </val></def>
   <def><name> Washout</name><val> Wash * StomachParms.WashMult </val></def>
-   <def>
-	<name> Active </name>
-	<val>  StomachParms.Mult * A * ( ( Mass / H2OMass ) ^ n ) / ( ( ( Mass / H2OMass ) ^ n ) + ( S ^ n ) ) </val>
-   </def>
-
-   <def><name> H2OChange </name><val> 0 </val></def>
-   <def><name> Absorption </name><val> ( Mass * c + Active ) MIN Mass  </val></def>
+  <def><name> Active </name><val>  Alpha * Mass / ( Mass + Beta ) </val></def>
+  <def><name> Absorption </name><val> ( Mass * c * StomachParms.cMult + Active ) MIN Mass  </val></def>
 
   <if>
    <test> Mass GT .0001 </test>
    <true>
-     <def>
-	<name> Out </name>
-	<val> Washout * Mass </val>
-     </def>
+     <def><name> Out </name><val> Washout * Mass </val></def>
    </true>
    <false>
      <def><name> Out </name><val> 0 </val></def>
@@ -86,11 +67,7 @@ Schema : DES V1.0
    </if>
 
    <def><name> Change </name><val> Stomach.ToDuod - Absorption - Out </val></def>
-
-
  </block>
-
-
 </definitions>  
 
 </structure>                                                                                                                                                  

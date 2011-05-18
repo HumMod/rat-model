@@ -1,0 +1,183 @@
+ HumMod / Vitamin D
+
+Created : 17-Oct-10
+Last Modified : 12-Jan-11
+Author : W Pruett
+Copyright : 2010-2011
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+ 
+
+<structure><name> TalmageVitD </name>
+
+ <variables>
+
+  <var><name>PTH</name></var>
+
+  <parm>
+    <name> VitD </name>
+    <val> 390000 </val>
+  </parm>  <!-- nmol in whole body --> 
+  
+  <parm>
+    <name> Base25Rate </name>
+    <val> -.00002674 </val>
+  </parm>  <!-- derived from half life of 18 days, assumption of steady state -->
+  
+  <parm>
+    <name> [25OHD] </name>
+    <val> 69 </val>
+  </parm>  <!-- nmol/L -->
+  
+  <parm>
+    <name> [25OHDwt] </name>
+    <val> 27.641 </val>
+  </parm>  <!-- ng/mL -->
+<!-- we will assume constant replacement of 25OHD, and so will not keep track of circulating levels in this model-->
+
+  <parm>
+    <name> v125DecayRate </name>
+    <val> -.00231 </val>
+  </parm>  <!-- derived from half life of 5 hours, assumption of steady state  -->
+  
+  <parm>
+    <name> k3 </name>
+    <val> .125 </val>
+  </parm>  
+  
+  <parm>
+    <name> k4 </name>
+    <val> -.0001 </val>
+  </parm>  
+  
+  <parm>
+    <name> Knormal </name>
+    <val> .0000032139 </val>
+  </parm>  <!-- ? .00321461  ? -->
+ 
+  <var>
+    <name>[125OH2D3]</name>
+    <val>91</val>
+  </var><!-- pmol/L -->
+
+  <var>
+    <name>[VitD]</name>
+  </var><!-- pmol/L -->
+
+  <var>
+    <name>bonus</name>
+    <val>0</val>
+  </var>
+
+  <parm>
+    <name> DDose </name>
+    <val> 0 </val>
+  </parm> 
+
+  <parm>
+    <name> LastDose </name>
+    <val> 0 </val>
+  </parm> 
+
+  <parm>
+    <name> Interval </name>
+    <val> 0 </val>
+  </parm> 
+
+  <parm>
+    <name> TimesDay </name>
+    <val> 0 </val>
+  </parm> 
+
+ </variables>
+
+ <equations>
+
+
+  <diffeq>
+    <name>v25OHD</name>  
+     <integralname>v25OHD</integralname>
+     <initialval> 189.75    </initialval>  <!-- nmol : Heaney et al 97-->
+     <dervname>d25OHD/dt</dervname>
+     <errorlim>.1</errorlim>
+  </diffeq>
+
+  <diffeq>
+    <name>v125OH2D</name>  
+     <integralname>v125OH2D</integralname>
+     <initialval> 264 </initialval>  <!-- pmol  Heaney et al 97 -->
+     <dervname>d125OH2D/dt</dervname>
+     <errorlim>.1</errorlim>
+  </diffeq>
+
+
+
+ </equations>
+
+ <definitions>
+
+ <block><name> Parms </name>
+
+    <if>
+    <test> TimesDay GT 0 </test>
+    <true>
+      <def>
+	<name> Interval </name>
+	<val> 1440 / TimesDay </val>
+      </def>
+    </true>
+    <false>
+       <def>
+	<name> Interval </name>
+	<val> INFINITE </val>
+      </def>
+    </false>
+    </if>
+
+
+
+ </block>
+
+ <block><name>Dervs</name>
+
+     <def>
+      <name>[VitD]</name>
+      <val>  VitD / 15 </val>
+    </def> 
+
+    <def>
+      <name>d125OH2D/dt</name>
+      <val>  0</val>
+    </def> <!-- from Omdahl 2002: p 152, PTH acts posttranscriptionally -->
+
+    <def>
+      <name>d25OHD/dt</name>
+      <val>  0</val>
+    </def> <!-- from Omdahl 2002: p 152, PTH acts posttranscriptionally -->
+
+
+
+ </block>
+
+<block><name> Wrapup </name> =======================
+
+<if>
+  <test> System.X GE ( LastDose + Interval ) </test>
+  <true>
+    <def>
+      <name> LastDose </name>
+      <val> LastDose + Interval </val>
+    </def>
+    <def>
+      <name> v125OH2D </name>
+      <val> v125OH2D + DDose </val>
+    </def>
+  </true>
+</if>
+</block>
+ </definitions>
+
+</structure>
+                                                                                                                                                                                                                     
+   
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        

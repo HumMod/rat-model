@@ -1,0 +1,110 @@
+ HumMod / Gut
+
+Created : 27-Oct-10
+Last Modified : 28-feb-11
+Author : W Pruett
+Copyright : 2010-2010//
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+   
+<structure><name> StomachPO4 </name>
+
+<variables>
+
+<!-- Absorption parameters -->
+
+  <var><name> WashOut </name></var>
+
+<!-- passive factors -->
+
+  <parm><name> Intake </name><val> .45 </val></parm>
+  <var><name> PM </name></var><!--per minute intake-->
+  <var><name> ToIntestine </name><val> 0 </val></var>
+
+<!-- timer vars -->
+  <var><name> ModTime </name></var>
+  <var><name> PO4In </name></var>
+  <var><name> MealTime </name></var>
+
+</variables>
+
+<equations>
+ <diffeq>
+  <name> Mass </name>  
+     <integralname> Mass </integralname>
+     <initialval> 0.01 </initialval>
+     <dervname> Change </dervname>
+     <errorlim> .00001 </errorlim>
+ </diffeq>
+
+</equations>
+
+
+<definitions>
+ <block>
+ <name>Parms</name>
+
+   <def><name> MealTime </name><val> StomachParms.MealTime </val></def>
+   <def>
+	<name>PM</name>
+	<val> Intake / ( 2 * MealTime ) </val>
+   </def>
+
+ </block>
+
+ <block>
+ <name>Dervs </name>
+
+<def><name> WashOut </name><val> StomachParms.WashOut </val></def>
+<def><name> ModTime </name><val> ( FRACTPART ( System.X / 1440 ) ) * 1440 </val></def>
+
+<testcase>
+ <case>
+  <test> ( 360 LE ModTime ) AND ( ModTime LE ( 360 + MealTime ) ) </test>
+   	<def>
+	<name> PO4In </name>
+	<val> PM </val>
+   	</def>
+ </case>
+ <case>
+  <test> ( 1080 LE ModTime ) AND ( ModTime LE ( 1080 + MealTime ) ) </test>
+	<def>
+	<name> PO4In </name>
+	<val> PM </val>
+	</def>
+ </case>
+ <case>
+  <test> TRUE </test>
+   	<def>
+	<name> PO4In </name>
+	<val> 0 </val>
+	</def>
+ </case>
+</testcase>
+
+ <if>
+   <test> ( WashOut * Mass ) LT .001 </test>
+  <true>
+   <def>
+	<name> ToIntestine </name>
+	<val> 0 </val>
+   </def>
+  </true>
+  <false>
+   <def>
+	<name> ToIntestine </name>
+	<val> WashOut * Mass </val>
+   </def>
+  </false>
+ </if>
+
+  <def><name> Change </name><val> PO4In - ToIntestine </val></def>
+
+ </block>
+
+
+</definitions>  
+
+</structure>                                                                                                                                                  
+   
+                                                                               

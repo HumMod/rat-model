@@ -1,0 +1,29 @@
+ HumMod / Dashboard
+
+Created : 2010-06-05
+Last Modified : 2010-06-06
+Author : Tom Coleman
+Copyright : 2010-2010
+By : University Of Mississippi Medical Center
+
+<branch>
+  <name> Dashboard </name>
+  <label> Dashboard </label>
+  <parent> Clinic </parent>
+</branch>
+
+<leaf>
+  <name> Talmage calcium panel</name>
+  <label> Calcium </label>
+  <parent> Dashboard </parent>
+</leaf>
+
+<leaf>
+  <name> Talmage bolus</name>
+  <label> Bolus </label>
+  <parent> Dashboard </parent>
+</leaf>
+
+End     
+    
+      

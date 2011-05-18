@@ -1,0 +1,92 @@
+ HumMod / Gut
+
+Created : 27-Oct-10
+Last Modified : 28-feb-11
+Author : W Pruett
+Copyright : 2010-2010//
+By : University Of Mississippi Medical Center
+Schema : DES V1.0
+   
+<structure><name> CaSupplement </name>
+
+<variables>
+
+  <parm><name> PillDissolve </name><val> 120 </val></parm>
+  <parm><name>Dose</name><val> 0 </val></parm>
+  <parm><name>TimesDay</name><val>0</val></parm>
+
+  <var><name>Interval</name><val>INFINITE</val></var>
+  <var><name>LastDose</name><val>0</val></var>
+  <var><name>PartialDose</name><val>0</val></var>
+
+</variables>
+
+
+
+
+<definitions>
+ <block>
+ <name>Parms</name>
+
+   <if>
+    <test> TimesDay GT 0 </test>
+    <true>
+      	<def>
+	<name> Interval </name>
+	<val> 1440 / TimesDay </val>
+      	</def>
+      	<def>
+        <name> LastDose </name>
+        <val> System.X </val>
+      	</def>
+    </true>
+    <false>
+     	<def>
+	<name> Interval </name>
+	<val> INFINITE </val>
+      	</def>
+    </false>
+    </if>
+ </block>
+
+ <block>
+ <name>Dervs </name>
+
+<if>
+ <test> System.X LE ( LastDose + PillDissolve ) </test>
+  <true> 
+  	<def>
+    	<name> PartialDose </name>
+    	<val> ( Dose / PillDissolve ) </val>
+  	</def>
+  </true>
+  <false>
+  	<def>
+   	<name> PartialDose</name>
+   	<val> 0 </val>
+  	</def>
+  </false>
+</if>
+
+ </block>
+
+<block>
+ <name> Wrapup </name>
+
+ <if>
+  <test> System.X GE ( LastDose + Interval ) </test>
+  <true>
+    <def>
+      <name> LastDose </name>
+      <val> LastDose + Interval </val>
+    </def>
+
+  </true>
+</if>
+
+</block>
+</definitions>  
+
+</structure>                                                                                                                                                  
+   
+                                                                               
