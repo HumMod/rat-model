@@ -29,7 +29,7 @@ Schema : DES V1.0
   <var><name> TargetCaBD </name></var>
   <var><name> Weight </name></var>
   <parm><name> WashOut </name><val> .0225 </val></parm> 95% washout in 150 minutes
-  <parm><name> MealTime </name><val>12</val></parm>
+  <parm><name> MealTime </name><val>60</val></parm>
   <parm><name> WashMult </name><val> 1 </val></parm>
   <parm><name> delay </name><val> .0002 </val></parm>
  </variables>
@@ -40,7 +40,7 @@ Schema : DES V1.0
  <diffeq>
   <name> CaBD </name>  
      <integralname> CaBD </integralname>
-     <initialval> 99.4328 </initialval>
+     <initialval> 107.4328 </initialval>
      <dervname> Change </dervname>
      <errorlim> .001 </errorlim>
  </diffeq>

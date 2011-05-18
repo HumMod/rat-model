@@ -14,7 +14,7 @@ Schema :
 <groupbox>
    <row> 2.0 </row>
    <col> 51.0 </col>
-   <high> 12.5 </high>
+   <high> 14.5 </high>
    <wide> 37.0 </wide>
    <title> Traits</title>
 
@@ -70,7 +70,7 @@ Schema :
 
 <showvalue>
   <row> 10.5 </row><col> 1 </col>
-  <name> Change </name>
+  <name> CaBD </name>
   <label> CaBD </label>
 </showvalue>
 
@@ -80,6 +80,11 @@ Schema :
   <label> TargetCaBD </label>
 </showvalue>
 
+<showvalue>
+  <row> 12.5 </row><col> 1 </col>
+  <name> Stomach.PM </name>
+  <label> per minute </label>
+</showvalue>
 
 </groupbox>
 
