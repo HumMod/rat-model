@@ -63,10 +63,11 @@ Schema :
 </showvalue>
 
 <showvalue>
-  <row> 9.5 </row><col> 1 </col>
-  <name> JMaxMult </name>
-  <label> Max Active (/minute) </label>
+  <row> 8.5 </row><col> 1 </col>
+  <name> JMaxDuod </name>
+  <label> JMaxDuod </label>
 </showvalue>
+
 
 <showvalue>
   <row> 10.5 </row><col> 1 </col>

@@ -13,18 +13,6 @@ HumMod / GoFor
 </gofor>
 
 <gofor>
-  <solutionint> 5.0 </solutionint>
-  <displayint> 0.5 </displayint>
-  <menuitem> 5 Min </menuitem>
-</gofor>
-
-<gofor>
-  <solutionint> 10 </solutionint>
-  <displayint> 0.5 </displayint>
-  <menuitem> 10 Min </menuitem>
-</gofor>
-
-<gofor>
   <solutionint> 30.0 </solutionint>
   <displayint> 1.0 </displayint>
   <storageint> 2.0 </storageint>
@@ -48,10 +36,10 @@ HumMod / GoFor
 </gofor>
 
 <gofor>
-  <solutionint> 300.0 </solutionint>
+  <solutionint> 180.0 </solutionint>
   <displayint> 5.0 </displayint>
   <storageint> 30.0 </storageint>
-  <menuitem> 5 Hours </menuitem>
+  <menuitem> 3 Hours </menuitem>
 </gofor>
 
 <gofor>

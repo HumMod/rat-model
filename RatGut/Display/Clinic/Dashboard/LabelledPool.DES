@@ -1,0 +1,106 @@
+
+Created : 17-Oct-10
+Last Modified : 17-Oct-10
+Author : W Pruett
+Copyright : 2010
+By : University of Mississippi Medical Center
+Solver : Digital Human (V1.0)
+
+
+<groupbox>
+   <row> 2 </row>
+   <col> 101.0 </col>
+   <high> 44.5 </high>
+   <wide> 47.0 </wide>
+   <title> Labelled Pool </title>
+
+ <showgraph>
+  <row> 1.0 </row><col> 1.0 </col>
+  <high> 10 </high><wide> 40 </wide>
+  <leftmargin> 15 </leftmargin>
+  <xaxis>
+     <name> System.X </name>
+     <label> Time </label>
+     <scale><min> 0 </min><max> 360 </max></scale>
+  </xaxis>
+  <yaxis>
+  <yvar>
+      <name> AUC.Serum% </name>
+      <label> serum frac </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+     <scale><min> 0 </min><max> .001 </max></scale>
+</yaxis>
+</showgraph>
+
+ <showgraph>
+  <row> 13.0 </row><col> 1.0 </col>
+  <high> 10 </high><wide> 40 </wide>
+  <leftmargin> 15 </leftmargin>
+  <xaxis>
+     <name> System.X </name>
+     <label> Time </label>
+     <scale><min> 0 </min><max> 360 </max></scale>
+  </xaxis>
+  <yaxis>
+  <yvar>
+      <name> AUC.Serum%pml </name>
+      <label> Frac circulating /ml serum </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+     <scale><min> 0 </min><max> .0001 </max></scale>
+</yaxis>
+</showgraph>
+
+ <showgraph>
+  <row> 25.0 </row><col> 1.0 </col>
+  <high> 10 </high><wide> 40 </wide>
+  <leftmargin> 15 </leftmargin>
+  <xaxis>
+     <name> System.X </name>
+     <label> Time </label>
+     <scale><min> 0 </min><max> 360 </max></scale>
+  </xaxis>
+  <yaxis>
+  <yvar>
+      <name> AUC.BoneLabelled </name>
+      <label> bone labelled </label>
+      <linecolor> BLACK </linecolor>
+    </yvar>
+     <scale><min> 0 </min><max> .0001 </max></scale>
+</yaxis>
+</showgraph>
+
+
+<showvalue>
+  <row> 36.5</row> <col> 1 </col>
+  <name> AUC.Abs </name>
+  <label> Total Absorption (1/min) </label>
+</showvalue>
+<showvalue>
+  <row> 37.5</row> <col> 1 </col>
+  <name> AUC.UrineLabelled </name>
+  <label> Urine Labelled </label>
+</showvalue>
+<showvalue>
+  <row> 38.5</row> <col> 1 </col>
+  <name> AUC.BoneXPool </name>
+  <label> BoneX </label>
+</showvalue>
+<showvalue>
+  <row> 39.5</row> <col> 1 </col>
+  <name> AUC.SerumLabelled </name>
+  <label> SerumLabelled </label>
+</showvalue>
+<showvalue>
+  <row> 40.5</row> <col> 1 </col>
+  <name> AUC.ECFLabelled </name>
+  <label> ECFLabelled </label>
+</showvalue>
+
+</groupbox>
+
+End
+                                                                                                                                                                                                                                                                                                       
+ 
+                                                                                                                                                                                                

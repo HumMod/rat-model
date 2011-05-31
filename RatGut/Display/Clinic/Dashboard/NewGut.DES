@@ -15,7 +15,7 @@ Solver : Digital Human (V1.0)
    <title> Gut Overview </title>
 
  <showgraph>
-  <row> 3.0 </row><col> 1.0 </col>
+  <row> 2.0 </row><col> 1.0 </col>
   <high> 10 </high><wide> 40 </wide>
   <leftmargin> 15 </leftmargin>
   <xaxis>
@@ -44,9 +44,14 @@ Solver : Digital Human (V1.0)
 </showgraph>
 
 <showvalue>
+  <row> 13.5</row> <col> 1 </col>
+  <name> StomachParms.ECFV </name>
+  <label> ECFV </label>
+</showvalue>
+<showvalue>
   <row> 14.5</row> <col> 1 </col>
-  <name> Ilium.TotalAbs </name>
-  <label> Total Absorption </label>
+  <name> AUC.CaPool </name>
+  <label> Ca Pool </label>
 </showvalue>
 
 </groupbox>

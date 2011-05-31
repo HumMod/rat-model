@@ -51,6 +51,21 @@ Solver : Digital Human (V1.0)
    <format><decimal> 3 </decimal></format>
    <label> Total absorption </label>
  </showvalue>
+
+ <showvalue>
+   <row> 10.5 </row><col> 1.0 </col>
+   <name> AUC.Passive </name>
+   <format><decimal> 3 </decimal></format>
+   <label> Passive Abs </label>
+ </showvalue>
+
+ <showvalue>
+   <row> 12.5 </row><col> 1.0 </col>
+   <name> AUC.Consumption </name>
+   <format><decimal> 3 </decimal></format>
+   <label> Consumed Mass (mg) </label>
+ </showvalue>
+
 </groupbox>
 
 End

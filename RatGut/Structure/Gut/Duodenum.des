@@ -15,16 +15,15 @@ Schema : DES V1.0
   <var><name> AbsFrac </name></var>
   <var><name> Alpha </name></var>
   <var><name> Beta </name></var>
-  <parm><name> A </name><val> .0033 </val></parm>
-  <parm><name> b </name><val> .04  </val></parm>
-  <parm><name> c </name><val> .00300  </val></parm>
+  <parm><name> c </name><val> .00400  </val></parm>
+  <var><name> n </name><val> .5 </val></var>
 
 <!-- Total effect -->
   <var><name> Absorption </name></var>
   <var><name> FracMass </name></var>
   <var><name> Abs </name></var>
   <var><name> Active </name></var>
-  <parm><name> Wash </name><val> .18 </val></parm>
+  <parm><name> Wash </name><val> .2 </val></parm>.33? (.2 yields 
   <var><name> Washout </name></var>
   <var><name> Out </name><val> 0 </val></var>
 
@@ -36,30 +35,33 @@ Schema : DES V1.0
      <integralname> Mass </integralname>
      <initialval> 0 </initialval>
      <dervname> Change </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 </equations>
 
-
 <definitions>
 
- <block>
- <name> Parms </name>
-
- </block>
 
  <block>
  <name>Dervs </name>
-  <def><name> Alpha </name><val> A * StomachParms.JMaxMult </val></def>
-  <def><name> Beta </name><val> b * StomachParms.bMult </val></def>
+  <def><name> Alpha </name><val> StomachParms.JMaxDuod </val></def>
+  <def><name> Beta </name><val> StomachParms.bDuod </val></def>
   <def><name> Washout</name><val> Wash * StomachParms.WashMult </val></def>
-  <def><name> Active </name><val>  Alpha * Mass / ( Mass + Beta ) </val></def>
+
+<if><test> Mass LT .0001 </test>
+<true>
+  <def><name> Active </name> <val> 0 </val></def>
+</true>
+<false>
+  <def><name> Active </name><val>  Alpha * ( Mass ^ n ) / ( ( Mass ^ n ) + ( Beta ^ n ) ) </val></def>
+</false>
+</if>
   <def><name> Absorption </name><val> ( Mass * c * StomachParms.cMult + Active ) MIN Mass  </val></def>
 
   <if>
    <test> Mass GT .0001 </test>
    <true>
-     <def><name> Out </name><val> Washout * Mass </val></def>
+     <def><name> Out </name><val> Washout * ( Mass - Absorption ) </val></def>
    </true>
    <false>
      <def><name> Out </name><val> 0 </val></def>

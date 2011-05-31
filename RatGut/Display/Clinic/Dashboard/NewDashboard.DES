@@ -35,6 +35,7 @@ Solver : Digital Human (V1.0)
 <?include NewAUC.DES ?>
 <?include Loop.DES ?>
 <?include Traits.DES ?>
+<?include LabelledPool.DES ?>
 
 
 </panel>

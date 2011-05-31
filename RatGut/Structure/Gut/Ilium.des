@@ -13,9 +13,8 @@ Schema : DES V1.0
 
 <!-- active factors -->
 
-  <var><name> Out </name><val> 0 </val></var>
-  <parm><name> c </name><val> .00300  </val></parm>
-  <parm><name> Wash </name><val> .045  </val></parm>
+  <parm><name> c </name><val> .00400  </val></parm>
+  <parm><name> Wash </name><val> .07  </val></parm>.05
   <var><name> Washout </name></var>
 
 <!-- Total effect -->
@@ -37,6 +36,14 @@ Schema : DES V1.0
      <errorlim> .00001 </errorlim>
  </diffeq>
 
+ <diffeq>
+  <name> Feces </name>  
+     <integralname> Feces </integralname>
+     <initialval> 0 </initialval>
+     <dervname> Out </dervname>
+     <errorlim> .00001 </errorlim>
+ </diffeq>
+
 </equations>
 
 
@@ -48,11 +55,11 @@ Schema : DES V1.0
  <block>
  <name>Dervs </name>
   <def><name> Washout</name><val> Wash * StomachParms.WashMult </val></def>
-   <def><name> Absorption </name><val> Mass * c * StomachParms.cMult</val></def>
+   <def><name> Absorption </name><val> Mass * c * StomachParms.cMult MIN Mass</val></def>
  <if>
-  <test> Mass GT .0001 </test>
+  <test> Mass GT .00001 </test>
   <true>
-   <def><name> Out </name><val> Washout * Mass </val></def>
+   <def><name> Out </name><val> Washout * ( Mass - Absorption ) </val></def>
   </true>
   <false>
    <def><name> Out </name><val> 0 </val></def>
