@@ -41,7 +41,7 @@ Schema : DES V1.0
      <integralname> Feces </integralname>
      <initialval> 0 </initialval>
      <dervname> Out </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 
 </equations>
