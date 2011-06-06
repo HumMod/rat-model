@@ -15,9 +15,9 @@ Schema : DES V1.0
   <var><name> AbsFrac </name></var>
   <var><name> Alpha </name></var>
   <var><name> Beta </name></var>
-  <parm><name> c </name><val> .00400  </val></parm>
+  <parm><name> c </name><val> .0038  </val></parm>
   <parm><name> n </name><val> .5 </val></parm>
-  <parm><name> Sensitivity</name><val> .00001 </val></parm>
+  <parm><name> Sensitivity</name><val> .000001 </val></parm>
 
   <var><name> Active1 </name></var>
   <var><name> Active2 </name></var>
@@ -54,6 +54,7 @@ Schema : DES V1.0
   <parm><name> Wash </name><val>.12</val></parm> .12 = washout in 60 minutes
   <var><name> Washout </name></var>
   <var><name> Out </name><val> 0 </val></var>
+  <var><name> off </name><val> .25 </val></var>
 </variables>
 
 ==================================================
@@ -64,7 +65,7 @@ Schema : DES V1.0
      <integralname> Mass1 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change1 </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 
 
@@ -73,7 +74,7 @@ Schema : DES V1.0
      <integralname> Mass2 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change2 </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -81,7 +82,7 @@ Schema : DES V1.0
      <integralname> Mass3 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change3 </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -89,7 +90,7 @@ Schema : DES V1.0
      <integralname> Mass4 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change4 </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -97,7 +98,7 @@ Schema : DES V1.0
      <integralname> Mass5 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change5 </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -105,15 +106,15 @@ Schema : DES V1.0
      <integralname> Mass6 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change6 </dervname>
-     <errorlim> .0001 </errorlim>
- </diffeq>0
+     <errorlim> .00001 </errorlim>
+ </diffeq>00
 
  <diffeq> 
   <name> Mass7 </name>  
      <integralname> Mass7 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change7 </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -121,7 +122,7 @@ Schema : DES V1.0
      <integralname> Mass8 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change8 </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -129,7 +130,7 @@ Schema : DES V1.0
      <integralname> Mass9 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change9 </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .00001 </errorlim>
  </diffeq>
 </equations>
 
@@ -153,15 +154,15 @@ Schema : DES V1.0
  <def><name> Active8 </name><val> Alpha *  ( Mass8 ^ n ) / (  ( Mass8 ^ n ) + Beta )  </val></def>
  <def><name> Active9 </name><val> Alpha *  ( Mass9 ^ n ) / (  ( Mass9 ^ n )  + Beta ) </val></def>
 
- <def><name> Absorption1 </name><val> ( Mass1 * c * StomachParms.cMult + Active1 ) MIN Mass1  </val></def>
- <def><name> Absorption2 </name><val> ( Mass2 * c * StomachParms.cMult + Active2 ) MIN Mass2  </val></def>
- <def><name> Absorption3 </name><val> ( Mass3 * c * StomachParms.cMult + Active3 ) MIN Mass3  </val></def>
- <def><name> Absorption4 </name><val> ( Mass4 * c * StomachParms.cMult + Active4 ) MIN Mass4  </val></def>
- <def><name> Absorption5 </name><val> ( Mass5 * c * StomachParms.cMult + Active5 ) MIN Mass5  </val></def>
- <def><name> Absorption6 </name><val> ( Mass6 * c * StomachParms.cMult + Active6 ) MIN Mass6  </val></def>
- <def><name> Absorption7 </name><val> ( Mass7 * c * StomachParms.cMult + Active7 ) MIN Mass7  </val></def>
- <def><name> Absorption8 </name><val> ( Mass8 * c * StomachParms.cMult + Active8 ) MIN Mass8  </val></def>
- <def><name> Absorption9 </name><val> ( Mass9 * c * StomachParms.cMult + Active9 ) MIN Mass9 </val></def>
+ <def><name> Absorption1 </name><val> ( ( Mass1 - off MAX -.01 ) * c * StomachParms.cMult + Active1 ) MIN Mass1  </val></def>
+ <def><name> Absorption2 </name><val> ( ( Mass2 - off MAX -.01  ) * c * StomachParms.cMult + Active2 ) MIN Mass2  </val></def>
+ <def><name> Absorption3 </name><val> ( ( Mass3 - off MAX -.01  )  * c * StomachParms.cMult + Active3 ) MIN Mass3  </val></def>
+ <def><name> Absorption4 </name><val> ( ( Mass4 - off MAX -.01  ) * c * StomachParms.cMult + Active4 ) MIN Mass4  </val></def>
+ <def><name> Absorption5 </name><val> ( ( Mass5 - off MAX -.01  ) * c * StomachParms.cMult + Active5 ) MIN Mass5  </val></def>
+ <def><name> Absorption6 </name><val> ( ( Mass6 - off MAX -.01  ) * c * StomachParms.cMult + Active6 ) MIN Mass6  </val></def>
+ <def><name> Absorption7 </name><val> ( ( Mass7 - off MAX -.01  )  * c * StomachParms.cMult + Active7 ) MIN Mass7  </val></def>
+ <def><name> Absorption8 </name><val> ( ( Mass8 - off MAX -.01  ) * c * StomachParms.cMult + Active8 ) MIN Mass8  </val></def>
+ <def><name> Absorption9 </name><val> ( ( Mass9 - off MAX -.01  ) * c * StomachParms.cMult + Active9 ) MIN Mass9 </val></def>
 
 <if>
   <test> Absorption1 LE Sensitivity </test>

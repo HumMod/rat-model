@@ -34,7 +34,7 @@ Schema : DES V1.0
   <var><name>DailyD</name></var>
   <var><name> Consumption</name><val>.05</val></var>
 
-  <parm><name> WashOut </name><val> .04 </val></parm> .0875 75% washout in 15 minutes
+  <parm><name> WashOut </name><val> .08 </val></parm> .0875 75% washout in 15 minutes
   <parm><name> MealTime </name><val>12</val></parm>
   <parm><name> WashMult </name><val> 1 </val></parm>
   <parm><name> delay </name><val> .0002</val></parm>
@@ -51,9 +51,9 @@ Schema : DES V1.0
  <diffeq>
   <name> CaBD </name>  
      <integralname> CaBD </integralname>
-     <initialval> 27.35 </initialval>
+     <initialval> 27.345 </initialval>
      <dervname> Change </dervname>
-     <errorlim> .001 </errorlim>
+     <errorlim> .01 </errorlim>
  </diffeq>
 
 </equations>
@@ -95,16 +95,16 @@ Schema : DES V1.0
   <def><name> CaEffect </name><val> ( 2.1 * (  .4 ^ 1.05 ) / ( ( .4 ^ 1.05 ) + ( DietaryCa% ^ 1.05 ) ) ) + 1.09 </val></def>
   <def><name> DEffect </name><val>  ( DietaryDIU ^ 1.25 ) / ( ( DietaryDIU ^ 1.25 ) + ( .9 ^ 1.25 ) ) </val></def>
   <def><name> AgeEffect </name><val> ( 7.7 * ( 55.3 ^ 10 ) / ( ( 55.3 ^ 10 ) + ( AgeDays ^ 10 ) ) ) + 1.18 </val></def>
-  <def><name> CaBDMult </name><val> .01 * ( 1 + ( ( 25 ^ 2 ) / ( ( 25 ^ 2 ) + ( AgeDays ^ 2 ) ) ) )</val></def>
+  <def><name> CaBDMult </name><val> .1 * ( 1 + ( ( 25 ^ 2 ) / ( ( 25 ^ 2 ) + ( AgeDays ^ 2 ) ) ) )</val></def>
 
   <def><name>TargetCaBD</name><val> 7.25 * CaEffect * DEffect * AgeEffect </val></def>-->.8
                 <!-- fit from numerous studies by Pansu and Bronner -->
   
   <def><name> Change </name><val> delay * ( TargetCaBD - CaBD ) </val></def>
-  <def><name>JMaxDuod</name><val> ( .00049 * CaBD - .000933 ) * 1  </val></def><!--Pansu et al; normalized for predicted levels in fig 1 of Bronner, Pansu, Stein "Analysis"-->
-  <def><name>JMaxJej</name><val>( .00025 * CaBD - .00046 ) * 1   </val></def><!--Pansu et al; normalized for predicted levels in fig 1 of Bronner, Pansu, Stein "Analysis"-->
+  <def><name>JMaxDuod</name><val> ( .00049 * CaBD - .000933 )  </val></def><!--Pansu et al; normalized for predicted levels in fig 1 of Bronner, Pansu, Stein "Analysis"-->
+  <def><name>JMaxJej</name><val>( .00025 * CaBD - .00046 )   </val></def><!--Pansu et al; normalized for predicted levels in fig 1 of Bronner, Pansu, Stein "Analysis"-->
   <def><name>bDuod</name><val> CaBDMult * CaBD  </val></def>b
-  <def><name> bJej </name><val> CaBDMult * CaBD</val></def>
+  <def><name> bJej </name><val> CaBDMult * CaBD </val></def>
 </block>
 
 </definitions>

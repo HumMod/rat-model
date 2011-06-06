@@ -53,7 +53,7 @@ Schema : DES V1.0
 
  <if><test> TestMeal GT 0 </test>
   <true>
-  <def><name> MealTime </name><val> 120 </val></def>
+  <def><name> MealTime </name><val> 12 </val></def>
   <def><name> PM </name><val> TestMeal / MealTime </val></def>
   </true>
   <false>
