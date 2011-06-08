@@ -12,7 +12,7 @@ Solver : Digital Human (V1.0)
 <groupbox>
    <row> 18.0 </row>
    <col> 1.0 </col>
-   <high> 21.0 </high>
+   <high> 19.0 </high>
    <wide> 45.0 </wide>
    <title> AUC </title>
 
@@ -54,16 +54,16 @@ Solver : Digital Human (V1.0)
 
  <showvalue>
    <row> 10.5 </row><col> 1.0 </col>
-   <name> AUC.AUCActive </name>
+   <name> AUC.Passive </name>
    <format><decimal> 3 </decimal></format>
-   <label> Active </label>
+   <label> Passive Abs </label>
  </showvalue>
 
  <showvalue>
    <row> 12.5 </row><col> 1.0 </col>
-   <name> AUC.Passive </name>
+   <name> AUC.Consumption </name>
    <format><decimal> 3 </decimal></format>
-   <label> Passive </label>
+   <label> Consumed Mass (mg) </label>
  </showvalue>
 
 </groupbox>

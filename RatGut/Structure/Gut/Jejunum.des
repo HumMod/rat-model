@@ -13,12 +13,10 @@ Schema : DES V1.0
 
 <!-- active factors -->
   <var><name> AbsFrac </name></var>
-
-  <parm><name> Alpha </name><val> .00287</val></parm>
-  <var><name> A </name></var>
-  <parm><name> S </name><val> .03 </val></parm>
-  <parm><name> n </name><val> 1. </val></parm>
-  <var><name> c </name></var>
+  <var><name> Alpha </name></var>
+  <var><name> Beta </name></var>
+  <parm><name> c </name><val> .00400  </val></parm>
+  <parm><name> n </name><val> .5 </val></parm>
   <parm><name> Sensitivity</name><val> .00001 </val></parm>
 
   <var><name> Active1 </name></var>
@@ -30,7 +28,6 @@ Schema : DES V1.0
   <var><name> Active7 </name></var>
   <var><name> Active8 </name></var>
   <var><name> Active9 </name></var>
-  <var><name> Active </name><val> 0 </val></var>
 
   <var><name> Out1 </name><val> 0 </val></var>
   <var><name> Out2 </name><val> 0 </val></var>
@@ -54,12 +51,12 @@ Schema : DES V1.0
 
   <var><name> FracMass </name></var>
   <var><name> Abs </name></var>
-  <parm><name> Wash </name><val>.12</val></parm>
+  <parm><name> Wash </name><val>.12</val></parm> .12 = washout in 60 minutes
   <var><name> Washout </name></var>
   <var><name> Out </name><val> 0 </val></var>
-
 </variables>
 
+==================================================
 <equations>
 
  <diffeq>
@@ -109,7 +106,7 @@ Schema : DES V1.0
      <initialval> 0 </initialval>
      <dervname> Change6 </dervname>
      <errorlim> .0001 </errorlim>
- </diffeq>
+ </diffeq>0
 
  <diffeq> 
   <name> Mass7 </name>  
@@ -134,67 +131,126 @@ Schema : DES V1.0
      <dervname> Change9 </dervname>
      <errorlim> .0001 </errorlim>
  </diffeq>
-
 </equations>
 
-
+=========================================================
 <definitions>
 
  <block>
  <name>Dervs </name>
 
- <def><name> c </name><val> StomachParms.c </val></def>
- <def><name> A </name><val> Alpha * StomachParms.Mult * StomachParms.JmaxMult </val></def>
- <def><name> Washout </name><val> Wash * StomachParms.WashMult </val></def>
+  <def><name> Washout</name><val> Wash * StomachParms.WashMult </val></def>
+  <def><name> Alpha</name><val> StomachParms.JMaxJej </val></def>
+  <def><name> Beta </name><val> StomachParms.bJej ^ n </val></def>
 
- <def><name> Active1 </name><val> A * ( Mass1 ^ n ) / ( ( Mass1 ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active2 </name><val> A * ( Mass2 ^ n ) / ( ( Mass2 ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active3 </name><val> A * ( Mass3 ^ n ) / ( ( Mass3 ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active4 </name><val> A * ( Mass4 ^ n ) / ( ( Mass4 ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active5 </name><val> A * ( Mass5 ^ n ) / ( ( Mass5 ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active6 </name><val> A * ( Mass6 ^ n ) / ( ( Mass6 ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active7 </name><val> A * ( Mass7 ^ n ) / ( ( Mass7 ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active8 </name><val> A * ( Mass8 ^ n ) / ( ( Mass8 ^ n ) + ( S ^ n ) ) </val></def>
- <def><name> Active9 </name><val> A * ( Mass9 ^ n ) / ( ( Mass9 ^ n ) + ( S ^ n ) ) </val></def>
+ <def><name> Active1 </name><val> Alpha * ( Mass1 ^ n ) / (  ( Mass1 ^ n ) + Beta ) </val></def>
+ <def><name> Active2 </name><val> Alpha *  ( Mass2 ^ n ) / (  ( Mass2 ^ n ) + Beta )  </val></def>
+ <def><name> Active3 </name><val> Alpha *  ( Mass3 ^ n )  / (  ( Mass3 ^ n ) + Beta )  </val></def>
+ <def><name> Active4 </name><val> Alpha *  ( Mass4 ^ n ) / (  ( Mass4 ^ n ) + Beta )  </val></def>
+ <def><name> Active5 </name><val> Alpha *  ( Mass5 ^ n ) / (  ( Mass5 ^ n ) + Beta ) </val></def>
+ <def><name> Active6 </name><val> Alpha *  ( Mass6 ^ n ) / (  ( Mass6 ^ n ) + Beta )  </val></def>
+ <def><name> Active7 </name><val> Alpha *  ( Mass7 ^ n ) / (  ( Mass7 ^ n ) + Beta )  </val></def>
+ <def><name> Active8 </name><val> Alpha *  ( Mass8 ^ n ) / (  ( Mass8 ^ n ) + Beta )  </val></def>
+ <def><name> Active9 </name><val> Alpha *  ( Mass9 ^ n ) / (  ( Mass9 ^ n )  + Beta ) </val></def>
 
- <def><name> Active </name><val> Active1 + Active2 + Active3 + Active4 + Active5 + Active6 + Active7 + Active8 + Active9 </val></def>
+ <def><name> Absorption1 </name><val> ( Mass1 * c * StomachParms.cMult + Active1 ) MIN Mass1  </val></def>
+ <def><name> Absorption2 </name><val> ( Mass2 * c * StomachParms.cMult + Active2 ) MIN Mass2  </val></def>
+ <def><name> Absorption3 </name><val> ( Mass3 * c * StomachParms.cMult + Active3 ) MIN Mass3  </val></def>
+ <def><name> Absorption4 </name><val> ( Mass4 * c * StomachParms.cMult + Active4 ) MIN Mass4  </val></def>
+ <def><name> Absorption5 </name><val> ( Mass5 * c * StomachParms.cMult + Active5 ) MIN Mass5  </val></def>
+ <def><name> Absorption6 </name><val> ( Mass6 * c * StomachParms.cMult + Active6 ) MIN Mass6  </val></def>
+ <def><name> Absorption7 </name><val> ( Mass7 * c * StomachParms.cMult + Active7 ) MIN Mass7  </val></def>
+ <def><name> Absorption8 </name><val> ( Mass8 * c * StomachParms.cMult + Active8 ) MIN Mass8  </val></def>
+ <def><name> Absorption9 </name><val> ( Mass9 * c * StomachParms.cMult + Active9 ) MIN Mass9 </val></def>
 
- <def><name> Absorption1 </name><val> ( c * Mass1 + Active1 ) MIN Mass1 </val></def>
- <def><name> Absorption2 </name><val> ( c * Mass2 + Active2 ) MIN Mass2 </val></def>
- <def><name> Absorption3 </name><val> ( c * Mass3 + Active3 ) MIN Mass3 </val></def>
- <def><name> Absorption4 </name><val> ( c * Mass4 + Active4 ) MIN Mass4 </val></def>
- <def><name> Absorption5 </name><val> ( c * Mass5 + Active5 ) MIN Mass5 </val></def>
- <def><name> Absorption6 </name><val> ( c * Mass6 + Active6 ) MIN Mass6 </val></def>
- <def><name> Absorption7 </name><val> ( c * Mass7 + Active7 ) MIN Mass7 </val></def>
- <def><name> Absorption8 </name><val> ( c * Mass8 + Active8 ) MIN Mass8 </val></def>
- <def><name> Absorption9 </name><val> ( c * Mass9 + Active9 ) MIN Mass9 </val></def>
+<if>
+  <test> Absorption1 LE Sensitivity </test>
+   <true><def><name> Absorption1</name><val> 0</val></def></true></if>
+<if>
+  <test> Absorption2 LE Sensitivity</test>
+   <true><def><name> Absorption2</name><val> 0</val></def></true></if>
+<if>
+  <test> Absorption3 LE Sensitivity</test>
+   <true><def><name> Absorption3</name><val> 0</val></def></true></if>
+<if>
+  <test> Absorption4 LE Sensitivity</test>
+   <true><def><name> Absorption4</name><val> 0</val></def></true></if>
+<if>
+  <test> Absorption5 LE Sensitivity</test>
+   <true><def><name> Absorption5</name><val> 0</val></def></true></if>
+<if>
+  <test> Absorption6 LE Sensitivity</test>
+   <true><def><name> Absorption6</name><val> 0</val></def></true></if>
+<if>
+  <test> Absorption7 LE Sensitivity</test>
+   <true><def><name> Absorption7</name><val> 0</val></def></true></if>
+<if>
+  <test> Absorption8 LE Sensitivity</test>
+   <true><def><name> Absorption8</name><val> 0</val></def></true></if>
+<if>
+  <test> Absorption9 LE Sensitivity </test>
+   <true><def><name> Absorption9</name><val> 0</val></def></true></if>
 
-  <def><name> Absorption </name><val> Absorption1 + Absorption2 + Absorption3 + Absorption4 + Absorption5 + Absorption6 + Absorption7 + Absorption8 + Absorption9 </val></def>
+ <def><name> Absorption </name><val> Absorption1 + Absorption2 + Absorption3 + Absorption4 + Absorption5 + Absorption6 + Absorption7 + Absorption8 + Absorption9 </val></def>
 
-  <def><name> Out1 </name><val> Washout * ( Mass1 - Absorption1 ) </val></def>
-  <def><name> Out2 </name><val> Washout * ( Mass2 - Absorption2 ) </val></def>
-  <def><name> Out3 </name><val> Washout * ( Mass3 - Absorption3 ) </val></def>
-  <def><name> Out4 </name><val> Washout * ( Mass4 - Absorption4 ) </val></def>
-  <def><name> Out5 </name><val> Washout * ( Mass5 - Absorption5 ) </val></def>
-  <def><name> Out6 </name><val> Washout * ( Mass6 - Absorption6 ) </val></def>
-  <def><name> Out7 </name><val> Washout * ( Mass7 - Absorption7 ) </val></def>
-  <def><name> Out8 </name><val> Washout * ( Mass8 - Absorption8 ) </val></def>
-  <def><name> Out </name><val> Washout * ( Mass9 - Absorption9 ) </val></def>
+ <if>
+  <test> Mass1 GT Sensitivity </test>
+  <true><def><name> Out1 </name><val> Washout * ( Mass1 - Absorption1 ) </val></def></true>
+  <false><def><name> Out1 </name><val> 0 </val></def></false></if>
 
-  <def><name> Change1 </name><val> Duodenum.Out - Absorption1 - Out1 </val></def>
-  <def><name> Change2 </name><val> Out1 - Absorption2 - Out2 </val></def>
-  <def><name> Change3 </name><val> Out2 - Absorption3 - Out3 </val></def>
-  <def><name> Change4 </name><val> Out3 - Absorption4 - Out4 </val></def>
-  <def><name> Change5 </name><val> Out4 - Absorption5 - Out5 </val></def>
-  <def><name> Change6 </name><val> Out5 - Absorption6 - Out6 </val></def>
-  <def><name> Change7 </name><val> Out6 - Absorption7 - Out7 </val></def>
-  <def><name> Change8 </name><val> Out7 - Absorption8 - Out8 </val></def>
-  <def><name> Change9 </name><val> Out8 - Absorption9 - Out </val></def>
+ <if>
+  <test> Mass2 GT Sensitivity</test>
+  <true><def><name> Out2 </name><val> Washout * ( Mass2 - Absorption2 )</val></def></true>
+  <false><def><name> Out2 </name><val> 0 </val></def></false></if>
+
+ <if>
+  <test> Mass3 GT Sensitivity</test>
+  <true><def><name> Out3 </name><val> Washout * ( Mass3 - Absorption3 ) </val></def></true>
+  <false><def><name> Out3 </name><val> 0 </val></def></false></if>
+
+ <if>
+  <test> Mass4 GT Sensitivity</test>
+  <true><def><name> Out4 </name><val> Washout * ( Mass4 - Absorption4 ) </val></def></true>
+  <false><def><name> Out4 </name><val> 0 </val></def></false></if>
+
+ <if>
+  <test> Mass5 GT Sensitivity</test>
+  <true><def><name> Out5 </name><val> Washout * ( Mass5 - Absorption5 ) </val></def></true>
+  <false><def><name> Out5 </name><val> 0 </val></def></false></if>
+
+ <if>
+  <test> Mass6 GT Sensitivity</test>
+  <true><def><name> Out6 </name><val> Washout * ( Mass6 - Absorption6 ) </val></def></true>
+  <false><def><name> Out6 </name><val> 0 </val></def></false></if>
+
+ <if>
+  <test> Mass7 GT Sensitivity</test>
+  <true><def><name> Out7 </name><val> Washout * ( Mass7 - Absorption7 )</val></def></true>
+  <false><def><name> Out7 </name><val> 0 </val></def></false></if>
+
+ <if>
+  <test> Mass8 GT Sensitivity</test>
+  <true><def><name> Out8 </name><val> Washout * ( Mass8 - Absorption8 ) </val></def></true>
+  <false><def><name> Out8 </name><val> 0 </val></def></false></if>
+
+ <if>
+  <test> Mass9 GT Sensitivity</test>
+  <true><def><name> Out </name><val> Washout * ( Mass9 - Absorption9 ) </val></def></true>
+  <false><def><name> Out </name><val> 0 </val></def></false></if>
+
+ <def><name> Change1 </name><val> Duodenum.Out - Absorption1 - Out1 </val></def>
+ <def><name> Change2 </name><val> Out1 - Absorption2 - Out2 </val></def>
+ <def><name> Change3 </name><val> Out2 - Absorption3 - Out3 </val></def>
+ <def><name> Change4 </name><val> Out3 - Absorption4 - Out4 </val></def>
+ <def><name> Change5 </name><val> Out4 - Absorption5 - Out5 </val></def>
+ <def><name> Change6 </name><val> Out5 - Absorption6 - Out6 </val></def>
+ <def><name> Change7 </name><val> Out6 - Absorption7 - Out7 </val></def>
+ <def><name> Change8 </name><val> Out7 - Absorption8 - Out8 </val></def>
+ <def><name> Change9 </name><val> Out8 - Absorption9 - Out </val></def>
 
  </block>
 </definitions>  
 
-</structure>                                                                                                                                  
-           
-   
+</structure>                                                                                                                           
+ 
                                                                                

@@ -10,7 +10,7 @@ Schema : DES V1.0
 <?xml version = '1.0' ?>
 
 <model>
- <?path C:\Documents and Settings\Hester_lab\Desktop\rat-model\RatGut ?>
+ <?path RatGut ?>
 <title>
    <basic> Calcium Homeostasis</basic>
    <navigator> DigitalHuman - Integrative Biomedicine </navigator>

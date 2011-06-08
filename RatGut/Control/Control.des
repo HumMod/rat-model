@@ -10,7 +10,7 @@ Schema : 2005.0
 
 <control>
 
-<?path C:\Documents and Settings\Hester_lab\Desktop\rat-model\RatGut\Control ?>
+<?path RatGut\Control ?>
 
 <?include GoFor.DES ?>
 

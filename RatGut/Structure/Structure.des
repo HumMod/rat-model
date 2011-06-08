@@ -6,11 +6,9 @@ Author : Tom Coleman
 Copyright : 2008-2010
 By : University of Mississippi Medical Center
 
-<?path C:\Documents and Settings\Hester_lab\Desktop\rat-model\RatGut\Structure ?>
+<?path RatGut\Structure ?>
 
 <?include Gut\TalmageSimpleGut.DES ?>
-
-
 <?include Vitamin D\TalmageVitD.DES ?>
 <?include AUC\AUC.DES ?>
 
@@ -20,9 +18,9 @@ By : University of Mississippi Medical Center
 
 <block>
   <name> Parms </name>
-  <call> Loop.Parms </call>
-  <call> Stomach.Parms </call>
   <call> StomachParms.Parms </call>
+  <call> Stomach.Parms </call>
+  <call> AUC.Parms </call>
   <call> TalmageVitD.Parms </call>
 </block>
 

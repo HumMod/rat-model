@@ -10,53 +10,103 @@ Schema : DES V1.0
 <structure><name> StomachParms </name>
 
  <variables>
+ 
+  <parm><name> StartAgeDays </name><val>63</val></parm>
+  <var><name> StartAgeMinutes </name></var>
+  <var><name> AgeDays </name></var>
+  <var><name> AgeMinutes </name></var>
 
- <!-- Absorption parameters -->
+  <var><name> cMult </name></var>
+  <var><name> bDuod </name></var>
+  <var><name> bJej </name></var>
 
-  <parm><name> WashOut </name><val> .0225 </val></parm> 95% washout in 150 minutes
+  <var><name> JMaxDuod</name></var>
+  <var><name> JMaxJej </name></var>
+  <var><name> AgeEffect </name></var>
+  <var><name> DEffect </name></var>
+  <var><name> CaEffect </name></var>
+  <var><name> TargetCaBD </name></var>
+  <var><name> CaBDMult </name></var>
+
+  <var><name> DailyCa </name></var>
+  <parm><name>DietaryCa%</name><val>.2</val></parm>
+  <parm><name> DietaryDIU</name><val>1</val></parm>
+  <var><name>DailyD</name></var>
+  <var><name> Consumption</name><val>.05</val></var>
+
+  <parm><name> WashOut </name><val> .04 </val></parm> .0875 75% washout in 15 minutes
   <parm><name> MealTime </name><val>12</val></parm>
-  <parm><name> Mult </name><val> .89 </val></parm>
   <parm><name> WashMult </name><val> 1 </val></parm>
-  <var><name> cTarget </name></var>
-  <var><name> Diet% </name></var>
-  <var><name> JmaxMultTarget </name></var>
+  <parm><name> delay </name><val> .0002</val></parm>
+
+  <var><name> Weight </name></var>
+  <var><name> SkeletalMass </name></var>
+  <var><name> ECFV </name></var>
+
  </variables>
 
 <equations>
- <diffeq>
-  <name> c </name>  
-     <integralname> c </integralname>
-     <initialval> 0.0031 </initialval>.0033
-     <dervname> cChange </dervname>
-     <errorlim> .000001 </errorlim>
- </diffeq>
+
 
  <diffeq>
-  <name> JmaxMult </name>  
-     <integralname> JmaxMult </integralname>
-     <initialval> 1.096 </initialval>1
-     <dervname> JChange </dervname>
-     <errorlim> .00001 </errorlim>
+  <name> CaBD </name>  
+     <integralname> CaBD </integralname>
+     <initialval> 27.35 </initialval>
+     <dervname> Change </dervname>
+     <errorlim> .001 </errorlim>
  </diffeq>
 
 </equations>
 
 <definitions>
-<block><name> Parms </name>
-
-<def><name> Diet% </name><val> Stomach.Intake / 1440 </val></def>
-<def><name> cTarget </name><val> .0031 </val></def><!-- derived from Pansu, Bellaton, Bronner, 1981-->
-<def><name>JmaxMultTarget</name><val> .5 + ( .1 / ( .1 + Diet% ) ) </val></def>
-
+<block>
+<name> Parms</name>
+  <def><name> StartAgeMinutes </name><val> StartAgeDays * 1440 </val></def>
+  <def><name> AgeDays </name><val> StartAgeDays </val></def>
 </block>
 
+<block>
+<name> Dervs</name>
 
-<block><name> Dervs </name>
+  <testcase>
+   <case>
+     <test> AgeDays LT 60 </test>
+     <def><name> Weight </name><val> 5 * AgeDays  - 72 </val></def>
+   </case>
+   <case>
+     <test>AgeDays LT 110 </test>
+     <def><name> Weight </name><val> 2.5 * AgeDays  + 75 </val></def>
+   </case>
+   <case> 
+     <test> TRUE </test>
+     <def><name> Weight </name><val> .6 * AgeDays + 282 </val></def>
+   </case>
+  </testcase>
+  <def><name> SkeletalMass</name><val> 250 * .0257 * ( Weight ^ 1.1 ) </val></def><!-- in mg -->
+  <def><name> ECFV </name><val> .18 * Weight + 2.21 </val></def>
 
-<def><name> JChange </name><val>   .00002 * ( JmaxMultTarget - JmaxMult ) </val></def>
-<def><name> cChange </name><val>  .00002 * (cTarget - c ) </val></def>
+  <def><name> AgeMinutes</name><val> StartAgeMinutes + System.X </val></def>
+  <def><name> AgeDays </name><val> ROUND ( AgeMinutes / 1440 )</val></def>
 
+  <def><name> DailyCa </name><val> Consumption * Weight * DietaryCa% * 10 </val></def>
+  <def><name> DailyD </name><val> Consumption * Weight * DietaryDIU </val></def>
+
+  <def><name> cMult </name><val> ( 1.6 - ( ( .6 / 20 ) * AgeDays ) ) MAX 1 </val></def>
+  <def><name> CaEffect </name><val> ( 2.1 * (  .4 ^ 1.05 ) / ( ( .4 ^ 1.05 ) + ( DietaryCa% ^ 1.05 ) ) ) + 1.09 </val></def>
+  <def><name> DEffect </name><val>  ( DietaryDIU ^ 1.25 ) / ( ( DietaryDIU ^ 1.25 ) + ( .9 ^ 1.25 ) ) </val></def>
+  <def><name> AgeEffect </name><val> ( 7.7 * ( 55.3 ^ 10 ) / ( ( 55.3 ^ 10 ) + ( AgeDays ^ 10 ) ) ) + 1.18 </val></def>
+  <def><name> CaBDMult </name><val> .01 * ( 1 + ( ( 25 ^ 2 ) / ( ( 25 ^ 2 ) + ( AgeDays ^ 2 ) ) ) )</val></def>
+
+  <def><name>TargetCaBD</name><val> 7.25 * CaEffect * DEffect * AgeEffect </val></def>-->.8
+                <!-- fit from numerous studies by Pansu and Bronner -->
+  
+  <def><name> Change </name><val> delay * ( TargetCaBD - CaBD ) </val></def>
+  <def><name>JMaxDuod</name><val> ( .00049 * CaBD - .000933 ) * 1  </val></def><!--Pansu et al; normalized for predicted levels in fig 1 of Bronner, Pansu, Stein "Analysis"-->
+  <def><name>JMaxJej</name><val>( .00025 * CaBD - .00046 ) * 1   </val></def><!--Pansu et al; normalized for predicted levels in fig 1 of Bronner, Pansu, Stein "Analysis"-->
+  <def><name>bDuod</name><val> CaBDMult * CaBD  </val></def>b
+  <def><name> bJej </name><val> CaBDMult * CaBD</val></def>
 </block>
+
 </definitions>
 
 </structure>                                                                                                                                                  

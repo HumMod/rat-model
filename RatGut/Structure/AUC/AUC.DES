@@ -14,9 +14,14 @@ Schema : DES V1.0
   <var><name>TestAUC</name><val> 0 </val></var>
   <var><name> Total </name><val> 0 </val></var>
   <var><name> Abs </name></var>
-  <var><name> TAbsFrac </name></var>
-  <var><name> Passive</name><val> 0 </val></var>
-  <var><name> TotalChange</name></var>
+  <var><name>MassLow </name></var>
+  <var><name> MassHi </name></var>
+  <var><name> BoneXPool</name></var>
+  <var><name> CaPool </name></var>
+  <var><name> Serum% </name></var>
+  <var><name> Serum%pml </name></var>
+  <var><name> SerumLabelled </name></var>
+  <var><name> BoneExChange </name></var>
 </variables>
 
 <equations>
@@ -47,10 +52,42 @@ Schema : DES V1.0
  </diffeq>
 
  <diffeq>
-   <name> AUCActive </name>
-   <integralname> AUCActive </integralname>
+   <name> ECFLabelled </name>
+   <integralname> ECFLabelled </integralname>
    <initialval> 0 </initialval>
-   <dervname> ChangeActive </dervname>
+   <dervname> ECFChange </dervname>
+   <errorlim> 0.000001 </errorlim>
+ </diffeq>
+
+ <diffeq>
+   <name> BoneLabelled </name>
+   <integralname> BoneLabelled </integralname>
+   <initialval> 0 </initialval>
+   <dervname> BoneChange </dervname>
+   <errorlim> 0.000001 </errorlim>
+ </diffeq>
+
+ <diffeq>
+   <name> UrineLabelled </name>
+   <integralname> UrineLabelled </integralname>
+   <initialval> 0 </initialval>
+   <dervname> UrineChange </dervname>
+   <errorlim> 0.000001 </errorlim>
+ </diffeq>
+
+ <diffeq>
+   <name> Consumption </name>
+   <integralname> Consumption </integralname>
+   <initialval> 0 </initialval>
+   <dervname> ConsumpChange </dervname>
+   <errorlim> 0.001 </errorlim>
+ </diffeq>
+
+ <diffeq>
+   <name> Passive </name>
+   <integralname> Passive </integralname>
+   <initialval> 0 </initialval>
+   <dervname> PassiveChange </dervname>
    <errorlim> 0.0001 </errorlim>
  </diffeq>
 
@@ -58,7 +95,12 @@ Schema : DES V1.0
 
 <definitions>
 
- 
+<block>
+ <name>Parms</name>
+
+
+</block>
+  
 <block>
  <name> AUC </name> 
   <def><name> TestAUC</name><val> NOT TestAUC </val></def>
@@ -66,23 +108,44 @@ Schema : DES V1.0
 
 <block>
  <name> Dervs </name> 
-  <def><name> Abs </name><val> Duodenum.Absorption + Ilium.Absorption + Jejunum.Absorption </val></def>
+ <def><name> SerumLabelled </name><val> ECFLabelled / 3 </val></def>
  <def><name> ChangeDuodAbsorption </name><val> TestAUC * Duodenum.Absorption </val></def> 
  <def><name> ChangeIliumAbs </name><val> TestAUC * Ilium.Absorption </val></def> 
  <def><name> ChangeJejunumAbs</name><val> TestAUC * Jejunum.Absorption </val></def> 
- <def><name> ChangeActive </name><val> TestAUC * ( Duodenum.Active + Jejunum.Active ) </val></def>
- <def><name> TotalChange </name><val> ChangeDuodAbsorption + ChangeIliumAbs + ChangeJejunumAbs </val></def>
+  <def><name> ConsumpChange </name><val> TestAUC * Stomach.CaIn</val></def>
+  <def><name> PassiveChange </name><val> TestAUC * .0004 * ( Duodenum.Mass + Jejunum.Mass1 + Jejunum.Mass2 + Jejunum.Mass3 + Jejunum.Mass4 + Jejunum.Mass5 + Jejunum.Mass6 + Jejunum.Mass7 + Jejunum.Mass8 + Jejunum.Mass9 + Ilium.Mass ) </val></def>
+
+  <def><name> Abs </name><val> Duodenum.Absorption + Ilium.Absorption + Jejunum.Absorption </val></def>
+  <def><name> MassLow</name><val> Stomach.Mass + Duodenum.Mass + Jejunum.Mass1 + Jejunum.Mass2 + Jejunum.Mass3 + Jejunum.Mass4 </val></def>
+  <def><name> MassHi </name><val> Jejunum.Mass5 + Jejunum.Mass6 + Jejunum.Mass7 + Jejunum.Mass8 + Jejunum.Mass9 + Ilium.Mass </val></def>
+
+  <def><name> CaPool </name><val> .0025 * StomachParms.ECFV * 40 </val></def>
+  <def><name> BoneXPool</name><val>StomachParms.SkeletalMass * .005 </val></def>
+  <def><name> BoneExChange</name><val> 0 * .02 * CaPool * ( ( SerumLabelled / ( SerumLabelled + ( CaPool / 3 ) ) ) - ( ( ( BoneLabelled MAX 0 ) ^ 1 ) / ( ( BoneLabelled MAX 0 ^ 1 ) + (  BoneXPool ) ) ) )</val></def>
+  <def><name> BoneChange </name><val> 0 * ( BoneExChange - ( .02 * CaPool * BoneLabelled / BoneXPool ) )</val></def>
+  <def><name> UrineChange </name><val> ( 0 / 1440 ) * SerumLabelled </val></def><!--urine counts only ~1% of an accounted dose, so we can remove them and not worry-->
+
+<if>
+  <test> Stomach.TestMeal GT 0 </test>
+  <true>
+   <def><name> ECFChange </name><val> Abs - BoneChange - UrineChange </val></def> <!-- the .005 part represent kidney loss; taken from meryl's kinetic models-->
+   <def><name> Serum% </name><val> SerumLabelled / Stomach.TestMeal  </val></def><!-- serum labelled is really ECF content; serum is 1/3 of ECFV-->
+  </true>
+  <false>
+   <def><name> ECFChange </name><val> 0 </val></def>
+   <def><name> Serum% </name><val> 0 </val></def>
+  </false>
+</if>
+
+ <def><name> Serum%pml</name><val> 3 * Serum% / StomachParms.ECFV</val></def>
+
 </block>
 
 <block><name> Wrapup</name>
   <def><name> Total</name><val> AUCDuodAbsorption + AUCJejunumAbs + AUCIliumAbs </val></def>
-  <def><name> Passive </name><val> TestAUC * ( Total - AUCActive ) </val></def>
-  <def><name> TAbsFrac </name><val> Total / Stomach.TotalIntake </val></def>
  </block>
 
 </definitions>
 </structure>
 
-End                                                                                                                                                                                                                                                                                                                               
-   
-                                                          
+END

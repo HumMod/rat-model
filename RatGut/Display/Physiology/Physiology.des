@@ -7,7 +7,7 @@ Copyright : 2011-2011
 By : University of Mississippi Medical Center
 Schema : DES V1.0
 
-<?path C:\Documents and Settings\Hester_lab\Desktop\rat-model\RatGut\Display\Physiology\ ?>
+<?path RatGut\Display\Physiology\ ?>
 
 
 <?include Vitamin D\TalmageVitD Panel.DES ?>
