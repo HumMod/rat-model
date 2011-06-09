@@ -113,7 +113,7 @@ Schema : DES V1.0
  <def><name> ChangeIliumAbs </name><val> TestAUC * Ilium.Absorption </val></def> 
  <def><name> ChangeJejunumAbs</name><val> TestAUC * Jejunum.Absorption </val></def> 
   <def><name> ConsumpChange </name><val> TestAUC * Stomach.CaIn</val></def>
-  <def><name> PassiveChange </name><val> TestAUC * .0004 * ( Duodenum.Mass + Jejunum.Mass1 + Jejunum.Mass2 + Jejunum.Mass3 + Jejunum.Mass4 + Jejunum.Mass5 + Jejunum.Mass6 + Jejunum.Mass7 + Jejunum.Mass8 + Jejunum.Mass9 + Ilium.Mass ) </val></def>
+  <def><name> PassiveChange </name><val> TestAUC * .0038 * ( Duodenum.Mass + Jejunum.Mass1 + Jejunum.Mass2 + Jejunum.Mass3 + Jejunum.Mass4 + Jejunum.Mass5 + Jejunum.Mass6 + Jejunum.Mass7 + Jejunum.Mass8 + Jejunum.Mass9 + Ilium.Mass ) </val></def>
 
   <def><name> Abs </name><val> Duodenum.Absorption + Ilium.Absorption + Jejunum.Absorption </val></def>
   <def><name> MassLow</name><val> Stomach.Mass + Duodenum.Mass + Jejunum.Mass1 + Jejunum.Mass2 + Jejunum.Mass3 + Jejunum.Mass4 </val></def>

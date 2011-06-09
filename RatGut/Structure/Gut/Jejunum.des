@@ -17,7 +17,7 @@ Schema : DES V1.0
   <var><name> Beta </name></var>
   <parm><name> c </name><val> .0038  </val></parm>
   <parm><name> n </name><val> .5 </val></parm>
-  <parm><name> Sensitivity</name><val> .000001 </val></parm>
+  <parm><name> Sensitivity</name><val> .0001 </val></parm>
 
   <var><name> Active1 </name></var>
   <var><name> Active2 </name></var>
@@ -54,7 +54,7 @@ Schema : DES V1.0
   <parm><name> Wash </name><val>.12</val></parm> .12 = washout in 60 minutes
   <var><name> Washout </name></var>
   <var><name> Out </name><val> 0 </val></var>
-  <var><name> off </name><val> .25 </val></var>
+  <var><name> off </name><val> 0. </val></var>
 </variables>
 
 ==================================================
@@ -65,7 +65,7 @@ Schema : DES V1.0
      <integralname> Mass1 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change1 </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 
 
@@ -74,7 +74,7 @@ Schema : DES V1.0
      <integralname> Mass2 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change2 </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -82,7 +82,7 @@ Schema : DES V1.0
      <integralname> Mass3 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change3 </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -90,7 +90,7 @@ Schema : DES V1.0
      <integralname> Mass4 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change4 </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -98,7 +98,7 @@ Schema : DES V1.0
      <integralname> Mass5 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change5 </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -106,7 +106,7 @@ Schema : DES V1.0
      <integralname> Mass6 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change6 </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>00
 
  <diffeq> 
@@ -114,7 +114,7 @@ Schema : DES V1.0
      <integralname> Mass7 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change7 </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -122,7 +122,7 @@ Schema : DES V1.0
      <integralname> Mass8 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change8 </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 
  <diffeq> 
@@ -130,7 +130,7 @@ Schema : DES V1.0
      <integralname> Mass9 </integralname>
      <initialval> 0 </initialval>
      <dervname> Change9 </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .0001 </errorlim>
  </diffeq>
 </equations>
 
