@@ -14,8 +14,8 @@ Schema :
 <groupbox>
    <row> 17.0 </row>
    <col> 51.0 </col>
-   <high> 7.5 </high>
-   <wide> 37.0 </wide>
+   <high> 5.5 </high>
+   <wide> 40.0 </wide>
    <title> Load control </title>
 
 
@@ -28,19 +28,13 @@ Schema :
 </repeatlist>
 
 <editbox>
-  <row> 1.0 </row><col> 1 </col>
-  <name> StomachParms.delay </name>
-  <label> CaBD delay </label>
-</editbox>
-
-<editbox>
-  <row> 2.50 </row><col> 1 </col>
+  <row> 1.50 </row><col> 1 </col>
   <name> Stomach.TestMeal </name>
   <label> Test Meal Amount (mg) </label>
 </editbox>
 
 <editbox>
-  <row> 4.0 </row><col> 1 </col>
+  <row> 3.0 </row><col> 1 </col>
   <name> Stomach.MealTime </name>
   <label> Test Meal Time (min) </label>
 </editbox>

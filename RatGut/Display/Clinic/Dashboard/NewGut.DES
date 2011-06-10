@@ -10,7 +10,7 @@ Solver : Digital Human (V1.0)
 <groupbox>
    <row> 2.0 </row>
    <col> 1.0 </col>
-   <high> 18.5 </high>
+   <high> 14 </high>
    <wide> 45.0 </wide>
    <title> Gut Overview </title>
 
@@ -42,17 +42,6 @@ Solver : Digital Human (V1.0)
      <scale><min> 0 </min><max> .05 </max></scale>
 </yaxis>
 </showgraph>
-
-<showvalue>
-  <row> 13.5</row> <col> 1 </col>
-  <name> StomachParms.ECFV </name>
-  <label> ECFV </label>
-</showvalue>
-<showvalue>
-  <row> 14.5</row> <col> 1 </col>
-  <name> AUC.CaPool </name>
-  <label> Ca Pool </label>
-</showvalue>
 
 </groupbox>
 

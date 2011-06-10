@@ -10,9 +10,9 @@ Solver : Digital Human (V1.0)
   
 
 <groupbox>
-   <row> 18.0 </row>
+   <row> 17.0 </row>
    <col> 1.0 </col>
-   <high> 19.0 </high>
+   <high> 15.5 </high>
    <wide> 45.0 </wide>
    <title> AUC </title>
 
