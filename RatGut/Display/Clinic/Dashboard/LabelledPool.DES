@@ -10,13 +10,13 @@ Solver : Digital Human (V1.0)
 <groupbox>
    <row> 2 </row>
    <col> 101.0 </col>
-   <high> 44.5 </high>
+   <high> 37.5 </high>
    <wide> 47.0 </wide>
    <title> Labelled Pool </title>
 
  <showgraph>
   <row> 1.0 </row><col> 1.0 </col>
-  <high> 10 </high><wide> 40 </wide>
+  <high> 9 </high><wide> 40 </wide>
   <leftmargin> 15 </leftmargin>
   <xaxis>
      <name> System.X </name>
@@ -34,8 +34,8 @@ Solver : Digital Human (V1.0)
 </showgraph>
 
  <showgraph>
-  <row> 13.0 </row><col> 1.0 </col>
-  <high> 10 </high><wide> 40 </wide>
+  <row> 11.0 </row><col> 1.0 </col>
+  <high> 9 </high><wide> 40 </wide>
   <leftmargin> 15 </leftmargin>
   <xaxis>
      <name> System.X </name>
@@ -45,7 +45,7 @@ Solver : Digital Human (V1.0)
   <yaxis>
   <yvar>
       <name> AUC.Serum%pml </name>
-      <label> Frac circulating /ml serum </label>
+      <label> frac/ml serum  </label>
       <linecolor> BLUE </linecolor>
     </yvar>
      <scale><min> 0 </min><max> .0001 </max></scale>
@@ -53,8 +53,8 @@ Solver : Digital Human (V1.0)
 </showgraph>
 
  <showgraph>
-  <row> 25.0 </row><col> 1.0 </col>
-  <high> 10 </high><wide> 40 </wide>
+  <row> 21.0 </row><col> 1.0 </col>
+  <high> 9 </high><wide> 40 </wide>
   <leftmargin> 15 </leftmargin>
   <xaxis>
      <name> System.X </name>
@@ -71,19 +71,18 @@ Solver : Digital Human (V1.0)
 </yaxis>
 </showgraph>
 
-
 <showvalue>
-  <row> 36.5</row> <col> 1 </col>
+  <row> 31.5</row> <col> 1 </col>
   <name> AUC.Abs </name>
   <label> Total Absorption (1/min) </label>
 </showvalue>
 <showvalue>
-  <row> 37.5</row> <col> 1 </col>
+  <row> 33</row> <col> 1 </col>
   <name> AUC.UrineLabelled </name>
   <label> Urine Labelled </label>
 </showvalue>
 <showvalue>
-  <row> 38.5</row> <col> 1 </col>
+  <row> 34.5</row> <col> 1 </col>
   <name> AUC.BoneXPool </name>
   <label> BoneX </label>
 </showvalue>

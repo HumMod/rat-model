@@ -13,7 +13,7 @@ Schema : DES V1.0
 
 <!-- Absorption parameters -->
   <var><name> WashOut </name></var>
-  <var><name> MealTime </name></var>
+  <parm><name> MealTime </name><val> 12 </val></parm>
 
 <!-- passive factors -->
   <var><name> PM </name></var><!--per minute intake-->
@@ -34,7 +34,7 @@ Schema : DES V1.0
      <integralname> Mass </integralname>
      <initialval> 0 </initialval>
      <dervname> Change </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .001 </errorlim>
  </diffeq>
 
 </equations>
@@ -53,7 +53,7 @@ Schema : DES V1.0
 
  <if><test> TestMeal GT 0 </test>
   <true>
-  <def><name> MealTime </name><val> 120 </val></def>
+  <def><name> MealTime </name><val> 1 </val></def>
   <def><name> PM </name><val> TestMeal / MealTime </val></def>
   </true>
   <false>
@@ -61,6 +61,7 @@ Schema : DES V1.0
   <def><name>PM</name><val> StomachParms.DailyCa / ( 5 * MealTime ) </val></def>
   </false>
  </if>
+
 
   <def><name> ModTime </name><val> ( FRACTPART ( System.X / 1440 ) ) * 1440 </val></def>
   <def><name> WashOut </name><val> StomachParms.WashOut </val></def>
@@ -93,7 +94,7 @@ Schema : DES V1.0
  </testcase>
 
  <if>
-   <test> ( WashOut * Mass ) LT .0001 </test>
+   <test> ( WashOut * Mass ) LT .001 </test>
   <true>
    <def><name> ToDuod </name><val> 0 </val></def>
   </true>

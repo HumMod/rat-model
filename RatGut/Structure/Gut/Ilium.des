@@ -13,7 +13,7 @@ Schema : DES V1.0
 
 <!-- active factors -->
 
-  <parm><name> c </name><val> .00400  </val></parm>
+  <parm><name> c </name><val> .0038 </val></parm>
   <parm><name> Wash </name><val> .07  </val></parm>.05
   <var><name> Washout </name></var>
 
@@ -22,6 +22,7 @@ Schema : DES V1.0
   <var><name> FracMass </name></var>
   <var><name> Abs </name></var>
   <var><name> TotalAbs </name></var>
+  <var><name> off </name><val> 0. </val></var>
 
 </variables>
 
@@ -33,7 +34,7 @@ Schema : DES V1.0
      <integralname> Mass </integralname>
      <initialval> 0 </initialval>
      <dervname> Change </dervname>
-     <errorlim> .00001 </errorlim>
+     <errorlim> .001 </errorlim>
  </diffeq>
 
  <diffeq>
@@ -41,7 +42,7 @@ Schema : DES V1.0
      <integralname> Feces </integralname>
      <initialval> 0 </initialval>
      <dervname> Out </dervname>
-     <errorlim> .0001 </errorlim>
+     <errorlim> .001 </errorlim>
  </diffeq>
 
 </equations>
@@ -55,9 +56,9 @@ Schema : DES V1.0
  <block>
  <name>Dervs </name>
   <def><name> Washout</name><val> Wash * StomachParms.WashMult </val></def>
-   <def><name> Absorption </name><val> Mass * c * StomachParms.cMult MIN Mass</val></def>
+   <def><name> Absorption </name><val> ( Mass - off MAX -.01  ) * c * StomachParms.cMult MIN Mass</val></def>
  <if>
-  <test> Mass GT .00001 </test>
+  <test> Mass GT .001 </test>
   <true>
    <def><name> Out </name><val> Washout * ( Mass - Absorption ) </val></def>
   </true>

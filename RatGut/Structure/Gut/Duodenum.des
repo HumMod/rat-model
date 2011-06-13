@@ -15,7 +15,7 @@ Schema : DES V1.0
   <var><name> AbsFrac </name></var>
   <var><name> Alpha </name></var>
   <var><name> Beta </name></var>
-  <parm><name> c </name><val> .00400  </val></parm>
+  <parm><name> c </name><val> .0038  </val></parm>
   <var><name> n </name><val> .5 </val></var>
 
 <!-- Total effect -->
@@ -26,6 +26,7 @@ Schema : DES V1.0
   <parm><name> Wash </name><val> .2 </val></parm>.33? (.2 yields 
   <var><name> Washout </name></var>
   <var><name> Out </name><val> 0 </val></var>
+  <var><name> off </name><val> 0.</val></var>
 
 </variables>
 
@@ -56,7 +57,7 @@ Schema : DES V1.0
   <def><name> Active </name><val>  Alpha * ( Mass ^ n ) / ( ( Mass ^ n ) + ( Beta ^ n ) ) </val></def>
 </false>
 </if>
-  <def><name> Absorption </name><val> ( Mass * c * StomachParms.cMult + Active ) MIN Mass  </val></def>
+  <def><name> Absorption </name><val> ( ( Mass - off MAX -.01 ) * c * StomachParms.cMult + Active ) MIN Mass  </val></def>
 
   <if>
    <test> Mass GT .0001 </test>

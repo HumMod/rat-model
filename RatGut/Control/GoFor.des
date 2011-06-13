@@ -7,21 +7,6 @@ HumMod / GoFor
    By : University of Mississippi Medical Center
 
 <gofor>
-  <solutionint> 1 </solutionint>
-  <displayint> 0.1666666 </displayint>
-  <menuitem> 1 Min </menuitem>
-</gofor>
-
-<gofor>
-  <solutionint> 30.0 </solutionint>
-  <displayint> 1.0 </displayint>
-  <storageint> 2.0 </storageint>
-  <menuitem> 30 Min </menuitem>
-</gofor>
-
-<gobar/>
-
-<gofor>
   <solutionint> 60 </solutionint>
   <displayint> 1.0 </displayint>
   <storageint> 5.0 </storageint>
@@ -29,10 +14,10 @@ HumMod / GoFor
 </gofor>
 
 <gofor>
-  <solutionint> 150.0 </solutionint>
+  <solutionint> 120.0 </solutionint>
   <displayint> 3.0 </displayint>
   <storageint> 30.0 </storageint>
-  <menuitem> 2.5 Hours </menuitem>
+  <menuitem> 2 Hours </menuitem>
 </gofor>
 
 <gofor>
@@ -40,6 +25,13 @@ HumMod / GoFor
   <displayint> 5.0 </displayint>
   <storageint> 30.0 </storageint>
   <menuitem> 3 Hours </menuitem>
+</gofor>
+
+<gofor>
+  <solutionint> 240.0 </solutionint>
+  <displayint> 5.0 </displayint>
+  <storageint> 30.0 </storageint>
+  <menuitem> 4 Hours </menuitem>
 </gofor>
 
 <gofor>
