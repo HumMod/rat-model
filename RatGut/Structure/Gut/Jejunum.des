@@ -51,7 +51,7 @@ Schema : DES V1.0
 
   <var><name> FracMass </name></var>
   <var><name> Abs </name></var>
-  <parm><name> Wash </name><val>.12</val></parm> .12 = washout in 60 minutes
+  <parm><name> Wash </name><val>.15</val></parm> .12 = washout in 60 minutes
   <var><name> Washout </name></var>
   <var><name> Out </name><val> 0 </val></var>
   <var><name> off </name><val> 0. </val></var>

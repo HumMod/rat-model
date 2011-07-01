@@ -14,7 +14,7 @@ Schema : DES V1.0
 <!-- active factors -->
 
   <parm><name> c </name><val> .0038 </val></parm>
-  <parm><name> Wash </name><val> .07  </val></parm>.05
+  <parm><name> Wash </name><val> .1  </val></parm>.05
   <var><name> Washout </name></var>
 
 <!-- Total effect -->

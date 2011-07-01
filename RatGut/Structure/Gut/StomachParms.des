@@ -11,7 +11,7 @@ Schema : DES V1.0
 
  <variables>
  
-  <parm><name> StartAgeDays </name><val>84</val></parm>
+  <parm><name> StartAgeDays </name><val> 45 </val></parm>
   <var><name> StartAgeMinutes </name></var>
   <var><name> AgeDays </name></var>
   <var><name> AgeMinutes </name></var>
@@ -29,7 +29,7 @@ Schema : DES V1.0
   <var><name> CaBDMult </name></var>
 
   <var><name> DailyCa </name></var>
-  <parm><name>DietaryCa%</name><val>1.5</val></parm>
+  <parm><name>DietaryCa%</name><val>1.</val></parm>
   <parm><name> DietaryDIU</name><val>2.2</val></parm>
   <var><name>DailyD</name></var>
   <var><name> Consumption</name><val>.05</val></var>
@@ -51,7 +51,7 @@ Schema : DES V1.0
  <diffeq>
   <name> CaBD </name>  
      <integralname> CaBD </integralname>
-     <initialval> 10.683 </initialval>
+     <initialval> 73.683 </initialval>
      <dervname> Change </dervname>
      <errorlim> .01 </errorlim>
  </diffeq>
@@ -85,7 +85,7 @@ Schema : DES V1.0
   <def><name> SkeletalMass</name><val> 250 * .0257 * ( Weight ^ 1.1 ) </val></def><!-- in mg -->
 
 <!--  <def><name> ECFV </name><val> .18 * Weight + 2.21 </val></def>-->
-  <def><name> ECFV </name><val> .15 * Weight </val></def>
+  <def><name> ECFV </name><val> ( 13 / 3 ) * ( .06 * Weight + .77 ) </val></def>
 
   <def><name> AgeMinutes</name><val> StartAgeMinutes + System.X </val></def>
   <def><name> AgeDays </name><val> ROUND ( AgeMinutes / 1440 )</val></def>

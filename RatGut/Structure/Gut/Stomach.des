@@ -25,6 +25,7 @@ Schema : DES V1.0
   <var><name> ModTime </name></var>
   <var><name> CaIn </name></var>
   <parm><name>TestMeal</name><val>0</val></parm>
+  <parm><name>TestMealTime </name><val> 1 </val></parm>
 
 </variables>
 
@@ -53,7 +54,7 @@ Schema : DES V1.0
 
  <if><test> TestMeal GT 0 </test>
   <true>
-  <def><name> MealTime </name><val> 1 </val></def>
+  <def><name> MealTime </name><val> MealTime </val></def>
   <def><name> PM </name><val> TestMeal / MealTime </val></def>
   </true>
   <false>

@@ -23,7 +23,7 @@ Schema : DES V1.0
   <var><name> FracMass </name></var>
   <var><name> Abs </name></var>
   <var><name> Active </name></var>
-  <parm><name> Wash </name><val> .2 </val></parm>.33? (.2 yields 
+  <parm><name> Wash </name><val> .25 </val></parm>.33? (.2 yields 
   <var><name> Washout </name></var>
   <var><name> Out </name><val> 0 </val></var>
   <var><name> off </name><val> 0.</val></var>

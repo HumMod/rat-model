@@ -83,8 +83,8 @@ Schema :
 
 <showvalue>
   <row> 12.5 </row><col> 1 </col>
-  <name> Stomach.PM </name>
-  <label> per minute </label>
+  <name> StomachParms.ECFV </name>
+  <label> ECFV </label>
 </showvalue>
 
 </groupbox>
