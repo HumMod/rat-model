@@ -16,7 +16,7 @@ Schema : DES V1.0
   <var><name> Alpha </name></var>
   <var><name> Beta </name></var>
   <parm><name> c </name><val> .0038  </val></parm>
-  <parm><name> n </name><val> .5 </val></parm>
+  <parm><name> n </name><val> .5 </val></parm>.5
   <parm><name> Sensitivity</name><val> .0001 </val></parm>
 
   <var><name> Active1 </name></var>

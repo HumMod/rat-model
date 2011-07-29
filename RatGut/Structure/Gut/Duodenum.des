@@ -16,7 +16,7 @@ Schema : DES V1.0
   <var><name> Alpha </name></var>
   <var><name> Beta </name></var>
   <parm><name> c </name><val> .0038  </val></parm>
-  <var><name> n </name><val> .5 </val></var>
+  <var><name> n </name><val> .5 </val></var>.5
 
 <!-- Total effect -->
   <var><name> Absorption </name></var>

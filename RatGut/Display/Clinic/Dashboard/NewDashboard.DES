@@ -9,8 +9,6 @@ Solver : Digital Human (V1.0)
 
 <panel><name> Loop Dashboard </name>
 
-
-
 <showclock>
    <row> 0.5 </row><col> 36 </col>
    <name> StomachParms.AgeMinutes </name>

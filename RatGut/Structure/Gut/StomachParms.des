@@ -11,7 +11,7 @@ Schema : DES V1.0
 
  <variables>
  
-  <parm><name> StartAgeDays </name><val> 84 </val></parm>
+  <parm><name> StartAgeDays </name><val> 45 </val></parm>
   <var><name> StartAgeMinutes </name></var>
   <var><name> AgeDays </name></var>
   <var><name> AgeMinutes </name></var>
@@ -30,7 +30,7 @@ Schema : DES V1.0
 
   <var><name> DailyCa </name></var>
   <parm><name>DietaryCa%</name><val>1.</val></parm>
-  <parm><name> DietaryDIU</name><val>1</val></parm>
+  <parm><name> DietaryDIU</name><val>2</val></parm>
   <var><name>DailyD</name></var>
   <var><name> Consumption</name><val>.05</val></var>
 
@@ -51,7 +51,7 @@ Schema : DES V1.0
  <diffeq>
   <name> CaBD </name>  
      <integralname> CaBD </integralname>
-     <initialval> 8.364 </initialval>
+     <initialval> 70.89 </initialval>
      <dervname> Change </dervname>
      <errorlim> .01 </errorlim>
  </diffeq>

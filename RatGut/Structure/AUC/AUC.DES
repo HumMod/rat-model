@@ -22,6 +22,7 @@ Schema : DES V1.0
   <var><name> Serum%pml </name></var>
   <var><name> SerumLabelled </name></var>
   <var><name> BoneExChange </name></var>
+  <var><name> TestTime </name><val> 0 </val></var>
 </variables>
 
 <equations>
@@ -104,6 +105,7 @@ Schema : DES V1.0
 <block>
  <name> AUC </name> 
   <def><name> TestAUC</name><val> NOT TestAUC </val></def>
+  <def><name> TestTime </name><val> System.X </val></def>
 </block>
 
 <block>
@@ -119,10 +121,10 @@ Schema : DES V1.0
   <def><name> MassLow</name><val> Stomach.Mass + Duodenum.Mass + Jejunum.Mass1 + Jejunum.Mass2 + Jejunum.Mass3 + Jejunum.Mass4 </val></def>
   <def><name> MassHi </name><val> Jejunum.Mass5 + Jejunum.Mass6 + Jejunum.Mass7 + Jejunum.Mass8 + Jejunum.Mass9 + Ilium.Mass </val></def>
 
-  <def><name> CaPool </name><val> ( .00215 * StomachParms.ECFV * 40 ) + ECFLabelled </val></def>2.5 mmol/L*ECF(in L)*mg/mmol  (2.06 in IF, 2.5 in serum)
+  <def><name> CaPool </name><val> ( .00215 * StomachParms.ECFV * 40 ) + ECFLabelled - ( 8 * ( System.X - TestTime ) / 1440 )</val></def>2.5 mmol/L*ECF(in L)*mg/mmol  (2.06 in IF, 2.5 in serum)
   <def><name> BoneXPool</name><val>StomachParms.SkeletalMass * .005 </val></def>
-  <def><name> BoneExChange</name><val> .075 * ( ( CaPool + ECFLabelled ) / 5 ) * ( SerumLabelled / ( SerumLabelled + ( CaPool / 5 ) ) )  </val></def><!--magnitude of calcium shift-->
-  <def><name> BoneChange </name><val> BoneExChange - ( .05 * ( CaPool / 5 ) * BoneLabelled / BoneXPool ) </val></def>
+  <def><name> BoneExChange</name><val> .075 * ( ( CaPool + ECFLabelled ) / 3 ) * ( SerumLabelled / ( SerumLabelled + ( CaPool / 3 ) ) )  </val></def><!--magnitude of calcium shift-->
+  <def><name> BoneChange </name><val> BoneExChange - ( .05 * ( CaPool / 3 ) * BoneLabelled / BoneXPool ) </val></def>
   <def><name> UrineChange </name><val> ( 0 / 1440 ) * SerumLabelled </val></def><!--urine counts only ~1% of an accounted dose, so we can remove them and not worry-->
 
 <if>
